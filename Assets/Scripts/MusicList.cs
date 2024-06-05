@@ -27,13 +27,6 @@ public class MusicList : MonoBehaviour
 
             isPaused = !isPaused;
         }
-
-        // Usa as setas para cima/baixo para ajustar o volume
-        float volumeChange = Input.GetAxis("Vertical");
-        if (volumeChange != 0f)
-        {
-            audioSource.volume = Mathf.Clamp01(audioSource.volume + volumeChange * 0.1f);
-        }
     }
 
     void PlayMusic()
@@ -42,10 +35,6 @@ public class MusicList : MonoBehaviour
         {
             audioSource.clip = musicList[currentTrackIndex];
             audioSource.Play();
-        }
-        else
-        {
-            Debug.LogError("No music add.");
         }
     }
 }
