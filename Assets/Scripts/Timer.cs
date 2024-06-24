@@ -5,18 +5,39 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float currentTime = 0f;
-    public float startTime = 10f;
-    public Text countText;
+    public float minutes = 0f;
+    public float seconds = 0f;
+    public Text countTime;
     void Start()
     {
-        currentTime = startTime;
+       if(minutes > 0 && seconds == 0){
+            seconds = 59;
+            minutes -= 1;
+       }
     }
-
     
     void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        countText.text = currentTime.ToString("0");
+        if(minutes <= 0 && seconds <= 0){
+            countTime.text = "00:00";
+        }
+        else
+        {
+            seconds -= Time.deltaTime;
+
+            if(seconds <= 0){
+
+                if(minutes > 0){
+                    minutes -= 1;
+                    seconds += 60;
+                }
+                else
+                {
+                    seconds = 0;
+                }
+            }
+        }
+
+        countTime.text = string.Format("{00}:{1:00}", minutes, Mathf.FloorToInt(seconds));
     }
 }
