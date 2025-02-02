@@ -13,6 +13,6 @@ public class DisplayTime : MonoBehaviour
     {
         hour = System.DateTime.Now.Hour;
         minutes = System.DateTime.Now.Minute;
-        displayHour.GetComponent<Text>().text = " " + hour + " : " + minutes;
+        displayHour.GetComponent<Text>().text = hour + ":" + minutes;
     }
 }
