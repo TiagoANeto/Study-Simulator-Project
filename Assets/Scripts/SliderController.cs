@@ -10,9 +10,8 @@ public class SliderController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    public void RainVolume(float value)
+    public void SoundEffectsVolume(float value)
     {
         audioSource.volume = value;
-
     }
 }
