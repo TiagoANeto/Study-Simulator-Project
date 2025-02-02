@@ -5,9 +5,16 @@ using UnityEngine;
 public class ButtonsControler : MonoBehaviour
 {
     public GameObject panelPlaylist;
+
     public void OpenPlaylist()
     {
-        panelPlaylist.SetActive(true);
+        if(panelPlaylist.activeInHierarchy == false)
+        {
+            panelPlaylist.SetActive(true);
+        }
+        else
+        {
+            panelPlaylist.SetActive(false);
+        }
     }
-
 }
