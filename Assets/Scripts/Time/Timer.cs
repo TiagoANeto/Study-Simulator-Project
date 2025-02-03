@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private float minutes = 25f;
-    private float seconds = 0f;
+    public float minutes = 25f;
+    public float seconds = 0f;
     public Text countTime;
-
 
     void Update()
     {
-        if(minutes <= 0 && seconds <= 0)
+        if (minutes <= 0 && seconds <= 0)
         {
             countTime.text = "00:00";
         }
@@ -20,9 +17,10 @@ public class Timer : MonoBehaviour
         {
             seconds -= Time.deltaTime;
 
-            if(seconds <= 0)
+            if (seconds <= 0)
             {
-                if(minutes > 0){
+                if (minutes > 0)
+                {
                     minutes -= 1;
                     seconds += 60;
                 }
@@ -32,19 +30,17 @@ public class Timer : MonoBehaviour
                 }
             }
         }
-
-        countTime.text = string.Format("{0:00}:{1:00}", minutes, Mathf.FloorToInt(seconds));
+        countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
     }
 
-    public void AddTime() //função simples para adicionar tempo
-    { 
-        minutes += 5f;
-        Debug.Log("+5min: "+minutes);
-    }
-
-    public void RemoveTime() //função simples para remover tempo
+    public void AddTime()
     {
-          if (minutes >= 5) 
+        minutes += 5f;
+    }
+
+    public void RemoveTime()
+    {
+        if (minutes >= 5)
         {
             minutes -= 5f;
         }
@@ -53,6 +49,5 @@ public class Timer : MonoBehaviour
             minutes = 0;
             seconds = 0;
         }
-        Debug.Log("-5min: "+minutes);
     }
 }
