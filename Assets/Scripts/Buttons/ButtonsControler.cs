@@ -5,16 +5,15 @@ using UnityEngine;
 public class ButtonsControler : MonoBehaviour
 {
     public GameObject panelPlaylist;
+    public GameObject panelToDoList;
 
     public void OpenPlaylist()
     {
-        if(panelPlaylist.activeInHierarchy == false)
-        {
-            panelPlaylist.SetActive(true);
-        }
-        else
-        {
-            panelPlaylist.SetActive(false);
-        }
+        panelPlaylist.SetActive(!panelPlaylist.activeInHierarchy);
+    }
+
+    public void OpenToDoList()
+    {
+        panelToDoList.SetActive(!panelToDoList.activeInHierarchy);
     }
 }
