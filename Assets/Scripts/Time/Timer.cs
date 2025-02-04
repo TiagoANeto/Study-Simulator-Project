@@ -6,18 +6,17 @@ public class Timer : MonoBehaviour
     public float minutes = 25f;
     public float seconds = 0f;
     public Text countTime;
+    private bool _isPausedTimer = true;
 
     void Update()
     {
-        if (minutes <= 0 && seconds <= 0)
-        {
-            countTime.text = "00:00";
-        }
-        else
+        if (_isPausedTimer) return; 
+
+        if (minutes > 0 || seconds > 0)
         {
             seconds -= Time.deltaTime;
 
-            if (seconds <= 0)
+            if (seconds < 0)
             {
                 if (minutes > 0)
                 {
@@ -33,9 +32,20 @@ public class Timer : MonoBehaviour
         countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
     }
 
+     private void UpdateUIText()
+    {
+        countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
+    }
+
+    public void StartPauseTimer()
+    {
+        _isPausedTimer = !_isPausedTimer;
+    }
+
     public void AddTime()
     {
         minutes += 5f;
+        UpdateUIText();
     }
 
     public void RemoveTime()
@@ -49,5 +59,13 @@ public class Timer : MonoBehaviour
             minutes = 0;
             seconds = 0;
         }
+        UpdateUIText();
+    }
+
+    public void ResetTimer()
+    {
+        minutes = 0;
+        seconds = 0;
+        UpdateUIText();
     }
 }
