@@ -29,10 +29,10 @@ public class Timer : MonoBehaviour
                 }
             }
         }
-        countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
+        UpdateUIText();
     }
 
-     private void UpdateUIText()
+    private void UpdateUIText()
     {
         countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
     }
