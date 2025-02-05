@@ -862,11 +862,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668093bc6aa065b41a3fda094aa8b47c, type: 3}
+  m_Script: {fileID: 11500000, guid: 64b1505e7c030474fab4af54807c7eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1: {r: 0.50132793, g: 0.22530258, b: 0.7830189, a: 0}
-  color2: {r: 0.6886792, g: 0.31510323, b: 0.3333813, a: 0}
+  displayHour: {fileID: 1712256735}
+  hour: 0
+  minutes: 0
+  color: {r: 0.3254717, g: 0.79170775, b: 1, a: 0}
   cam: {fileID: 330585545}
 --- !u!1 &354868647
 GameObject:
@@ -4660,7 +4662,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330585548}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BackgroundColor, Assembly-CSharp
         m_MethodName: ChangeBackgroundColor
         m_Mode: 1
@@ -4935,7 +4937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330585548}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BackgroundColor, Assembly-CSharp
         m_MethodName: ChangeBackgroundColorRed
         m_Mode: 1
@@ -5127,7 +5129,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1819727465}
-  - component: {fileID: 1819727466}
   m_Layer: 5
   m_Name: DisplayHour - PC
   m_TagString: Untagged
@@ -5156,21 +5157,6 @@ RectTransform:
   m_AnchoredPosition: {x: 796.3, y: 414.944}
   m_SizeDelta: {x: 174.611, y: 51.889}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1819727466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819727464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b1505e7c030474fab4af54807c7eed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayHour: {fileID: 1712256735}
-  hour: 0
-  minutes: 0
 --- !u!1 &1873044441
 GameObject:
   m_ObjectHideFlags: 0

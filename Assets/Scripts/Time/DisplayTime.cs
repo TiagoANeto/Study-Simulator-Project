@@ -8,11 +8,27 @@ public class DisplayTime : MonoBehaviour
     public Text displayHour;
     public int hour;
     public int minutes;
+    public Color color;
+    public Camera cam;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     void Update()
     {
         hour = System.DateTime.Now.Hour;
         minutes = System.DateTime.Now.Minute;
-        displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar 
+        displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
+        ChangeBackgroundColor(); 
+    }
+
+    private void ChangeBackgroundColor()
+    {
+        if(hour == 11 || hour == 12)
+        {
+            cam.backgroundColor = color;
+        }
     }
 }
