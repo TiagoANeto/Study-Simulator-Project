@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class DisplayTime : MonoBehaviour
 {
+    [Header("Declaração")]
+    [Space(10)]
     public Text displayHour;
     public int hour;
     public int minutes;
-    public Color color;
     public Camera cam;
+    public Color morningColor = new Color(1f, 0.6f, 0.3f); // Laranja suave (manhã)
+    public Color afternoonColor = new Color(0.9f, 0.7f, 0.5f); // Amarelo quente (tarde)
+    public Color nightColor = new Color(0.1f, 0.1f, 0.2f); // Azul escuro (noite)
 
     void Start()
     {
@@ -21,14 +25,17 @@ public class DisplayTime : MonoBehaviour
         hour = System.DateTime.Now.Hour;
         minutes = System.DateTime.Now.Minute;
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
-        ChangeBackgroundColor(); 
+
+        ChangeBackgroundColor(hour); 
     }
 
-    private void ChangeBackgroundColor()
+    private void ChangeBackgroundColor(int hour)
     {
-        if(hour == 11 || hour == 12)
-        {
-            cam.backgroundColor = color;
-        }
+        if (hour >= 6 && hour < 12) // Manhã
+            cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
+        else if (hour >= 12 && hour < 18) // Tarde
+            cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
+        else // Noite
+            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 18) / 6f);
     }
 }
