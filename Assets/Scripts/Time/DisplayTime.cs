@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class DisplayTime : MonoBehaviour
 {
-    [Header("Declaração")]
+    [Header("Variáveis para aramazenar a hora do sistema local")]
     [Space(10)]
-    public Text displayHour;
-    public int hour;
-    public int minutes;
-    public Camera cam;
+
+    [SerializeField] private Text displayHour;
+    [SerializeField] private int hour;
+    [SerializeField] private int minutes;
+
+    [Header("Cores para mudança de backgrond ao longo do dia")]
+    [Space(10)]
+
     public Color morningColor = new Color(1f, 0.6f, 0.3f); // Laranja suave (manhã)
     public Color afternoonColor = new Color(0.9f, 0.7f, 0.5f); // Amarelo quente (tarde)
     public Color nightColor = new Color(0.1f, 0.1f, 0.2f); // Azul escuro (noite)
+    public Camera cam;
 
     void Start()
     {
