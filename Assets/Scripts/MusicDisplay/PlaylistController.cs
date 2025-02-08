@@ -12,7 +12,9 @@ public class PlaylistController : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.volume = 0.05f;
+        audioSource.volume = 0.01f;
+        audioSource.playOnAwake = false;
+        audioSource.loop = true;
         PlayMusic();
     }
 
@@ -24,6 +26,7 @@ public class PlaylistController : MonoBehaviour
             audioSource.Play();
         }
     }
+
     public void PlaylistVolume(float value) 
     {
         audioSource.volume = value;
@@ -42,8 +45,21 @@ public class PlaylistController : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public void NextMusic()
+    public void NextSong()
     {
-        //A ser implementado
+        if (musicList.Length == 0) return;
+
+        currentTrackIndex = (currentTrackIndex + 1) % musicList.Length; 
+        audioSource.clip = musicList[currentTrackIndex];
+        audioSource.Play(); 
+    }
+    
+    public void PreviousSong()
+    {
+        if (musicList.Length == 0) return;
+
+        currentTrackIndex = (currentTrackIndex - 1) % musicList.Length; 
+        audioSource.clip = musicList[currentTrackIndex];
+        audioSource.Play(); 
     }
 }

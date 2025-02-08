@@ -15,9 +15,9 @@ public class DisplayTime : MonoBehaviour
     [Header("Cores para mudança de backgrond ao longo do dia")]
     [Space(10)]
 
-    public Color morningColor = new Color(1f, 0.6f, 0.3f); // Laranja suave (manhã)
-    public Color afternoonColor = new Color(0.9f, 0.7f, 0.5f); // Amarelo quente (tarde)
-    public Color nightColor = new Color(0.1f, 0.1f, 0.2f); // Azul escuro (noite)
+    public Color morningColor;
+    public Color afternoonColor;
+    public Color nightColor;
     public Camera cam;
 
     void Start()

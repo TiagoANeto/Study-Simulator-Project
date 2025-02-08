@@ -301,7 +301,7 @@ RectTransform:
   m_GameObject: {fileID: 137143677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48734, y: 0.48734, z: 0.48734}
+  m_LocalScale: {x: 0.59070486, y: 0.59070486, z: 0.59070486}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2144428892}
@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 859.6999, y: 346.7}
+  m_AnchoredPosition: {x: 870, y: 359}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &137143679
@@ -360,7 +360,6 @@ GameObject:
   m_Component:
   - component: {fileID: 139153680}
   - component: {fileID: 139153681}
-  - component: {fileID: 139153682}
   m_Layer: 5
   m_Name: Music Volume
   m_TagString: Untagged
@@ -435,13 +434,13 @@ MonoBehaviour:
   m_HandleRect: {fileID: 296751603}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.1
   m_WholeNumbers: 0
-  m_Value: 0.05
+  m_Value: 0.02
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 139153682}
+      - m_Target: {fileID: 2145057274}
         m_TargetAssemblyTypeName: PlaylistController, Assembly-CSharp
         m_MethodName: PlaylistVolume
         m_Mode: 0
@@ -453,22 +452,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &139153682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139153679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e78a725c188594c8b60c5033bf30f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicList:
-  - {fileID: 8300000, guid: c9991c23e45ab0f4583e692617f7923d, type: 3}
-  - {fileID: 8300000, guid: 5e3ebdbe862b8854bb98bee9f27dd7a0, type: 3}
-  - {fileID: 8300000, guid: c6661e28dcf579f42b0f4855df5f8ac1, type: 3}
 --- !u!1 &188082315
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,9 +613,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1060462191}
-        m_TargetAssemblyTypeName: ButtonsControler, Assembly-CSharp
-        m_MethodName: OpenPlaylist
+      - m_Target: {fileID: 2145057274}
+        m_TargetAssemblyTypeName: PlaylistController, Assembly-CSharp
+        m_MethodName: NextSong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -713,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 1.7827, y: 0}
+  m_SizeDelta: {x: -6.4346, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &296751602
 GameObject:
@@ -944,8 +927,8 @@ MonoBehaviour:
   displayHour: {fileID: 1712256735}
   hour: 0
   minutes: 0
-  morningColor: {r: 1, g: 0.6, b: 0.3, a: 1}
-  afternoonColor: {r: 0.9, g: 0.7, b: 0.5, a: 1}
+  morningColor: {r: 1, g: 0.8534511, b: 0.36320752, a: 1}
+  afternoonColor: {r: 0.8584906, g: 0.21040562, b: 0, a: 1}
   nightColor: {r: 0.1, g: 0.1, b: 0.2, a: 1}
   cam: {fileID: 330585545}
 --- !u!1 &354868647
@@ -1546,7 +1529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -7.8000684, y: 17}
+  m_AnchoredPosition: {x: 0, y: 17}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485461980
@@ -1685,7 +1668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &557515538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1695,7 +1678,7 @@ RectTransform:
   m_GameObject: {fileID: 557515537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.44309, y: 0.44309, z: 0.44309}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1033989414}
@@ -1703,10 +1686,10 @@ RectTransform:
   - {fileID: 2046248882}
   m_Father: {fileID: 696603572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28, y: 42}
-  m_SizeDelta: {x: -1213.7458, y: 233.8948}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 814, y: -9}
+  m_SizeDelta: {x: 635.5482, y: -416.5112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557515539
 MonoBehaviour:
@@ -2341,7 +2324,6 @@ RectTransform:
   - {fileID: 137143678}
   - {fileID: 1748077041}
   - {fileID: 1795385782}
-  - {fileID: 1470128606}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2451,7 +2433,7 @@ RectTransform:
   m_GameObject: {fileID: 738412687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48734, y: 0.48734, z: 0.48734}
+  m_LocalScale: {x: 0.59070486, y: 0.59070486, z: 0.59070486}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1704668544}
@@ -2459,7 +2441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 746.6, y: 346.7}
+  m_AnchoredPosition: {x: 737.5, y: 359}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738412689
@@ -2512,7 +2494,6 @@ GameObject:
   - component: {fileID: 768280171}
   - component: {fileID: 768280170}
   - component: {fileID: 768280169}
-  - component: {fileID: 768280172}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -2583,7 +2564,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 768280172}
+      - m_Target: {fileID: 2145057274}
         m_TargetAssemblyTypeName: PlaylistController, Assembly-CSharp
         m_MethodName: ButtonMusicPause
         m_Mode: 1
@@ -2633,19 +2614,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768280167}
   m_CullTransparentMesh: 1
---- !u!114 &768280172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768280167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e78a725c188594c8b60c5033bf30f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicList: []
 --- !u!1 &793509985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,7 +2726,7 @@ RectTransform:
   m_GameObject: {fileID: 918432391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.48734, y: 0.48734, z: 0.48734}
+  m_LocalScale: {x: 0.59070486, y: 0.59070486, z: 0.59070486}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 613080337}
@@ -2766,7 +2734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 803.6999, y: 346.7}
+  m_AnchoredPosition: {x: 803.2, y: 359}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918432393
@@ -3072,8 +3040,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4317, y: 117.7585}
-  m_SizeDelta: {x: 383.1364, y: 42.3761}
+  m_AnchoredPosition: {x: 3.379, y: 104.9}
+  m_SizeDelta: {x: 368.212, y: 42.376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1033989415
 MonoBehaviour:
@@ -3096,13 +3064,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 33
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 8dd6bba74caee7840a91e33ff0db098a, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3590,9 +3558,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1060462191}
-        m_TargetAssemblyTypeName: ButtonsControler, Assembly-CSharp
-        m_MethodName: OpenPlaylist
+      - m_Target: {fileID: 2145057274}
+        m_TargetAssemblyTypeName: PlaylistController, Assembly-CSharp
+        m_MethodName: PreviousSong
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3861,8 +3829,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.625, y: 60.1175}
-  m_SizeDelta: {x: 411.25, y: 41.6758}
+  m_AnchoredPosition: {x: 35.478, y: 57.8}
+  m_SizeDelta: {x: 435.331, y: 43.115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268333298
 MonoBehaviour:
@@ -3885,13 +3853,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 33
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 8dd6bba74caee7840a91e33ff0db098a, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3939,8 +3907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 4.2827, y: 0}
+  m_SizeDelta: {x: -11.435, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1374206326
 GameObject:
@@ -4057,7 +4025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1.122, y: -44.7}
+  m_AnchoredPosition: {x: -1.122, y: -32}
   m_SizeDelta: {x: 175.9222, y: 40.5717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420908933
@@ -4280,56 +4248,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448165203}
   m_CullTransparentMesh: 1
---- !u!1 &1470128605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1470128606}
-  - component: {fileID: 1470128607}
-  m_Layer: 5
-  m_Name: Playlist
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1470128606
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470128605}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 696603572}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1470128607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470128605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e78a725c188594c8b60c5033bf30f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicList:
-  - {fileID: 0}
 --- !u!1 &1477656419
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,7 +4423,7 @@ Transform:
   m_GameObject: {fileID: 1504135734}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 846, y: 251, z: 73.59208}
+  m_LocalPosition: {x: 846, y: 256, z: 73.59208}
   m_LocalScale: {x: 2.6928473, y: 2.6928473, z: 2.6928473}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5510,7 +5428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 796.3, y: 414.944}
+  m_AnchoredPosition: {x: 796.3, y: 431}
   m_SizeDelta: {x: 174.611, y: 51.889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1873044441
@@ -6310,8 +6228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.6256, y: -0.2326}
-  m_SizeDelta: {x: 411.25, y: 38.388}
+  m_AnchoredPosition: {x: 46.626, y: -1.2}
+  m_SizeDelta: {x: 454.69, y: 47.021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046248883
 MonoBehaviour:
@@ -6334,13 +6252,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 33
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 8dd6bba74caee7840a91e33ff0db098a, type: 3}
+    m_FontSize: 26
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -6611,6 +6529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2145057273}
+  - component: {fileID: 2145057274}
   m_Layer: 5
   m_Name: MusicPlay-Container
   m_TagString: Untagged
@@ -6639,9 +6558,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 813, y: 35}
+  m_AnchoredPosition: {x: 821, y: -205.6}
   m_SizeDelta: {x: 153.399, y: 55.718}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2145057274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145057272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e78a725c188594c8b60c5033bf30f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicList:
+  - {fileID: 8300000, guid: efd5eda22f38ec94a92facefe52f581f, type: 3}
+  - {fileID: 8300000, guid: c9991c23e45ab0f4583e692617f7923d, type: 3}
+  - {fileID: 8300000, guid: 5e3ebdbe862b8854bb98bee9f27dd7a0, type: 3}
+  - {fileID: 8300000, guid: c6661e28dcf579f42b0f4855df5f8ac1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
