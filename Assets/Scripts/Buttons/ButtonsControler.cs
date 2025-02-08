@@ -22,4 +22,9 @@ public class ButtonsControler : MonoBehaviour
     {
         timerPomodoro.SetActive(!timerPomodoro.activeInHierarchy);
     }
+
+    public void DeleteTask()
+    {
+        Destroy(this.gameObject);
+    }
 }

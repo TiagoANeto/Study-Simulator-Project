@@ -94,6 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5078618684173429726}
+  - component: {fileID: 8283970371713361426}
   m_Layer: 5
   m_Name: Task-Container
   m_TagString: Untagged
@@ -123,6 +124,21 @@ RectTransform:
   m_AnchoredPosition: {x: 14.1649, y: 49.575}
   m_SizeDelta: {x: 175.8525, y: 31.3869}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8283970371713361426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093011527543209570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aec5a3ba748257488c6ea504e5e7936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelPlaylist: {fileID: 0}
+  panelToDoList: {fileID: 0}
+  timerPomodoro: {fileID: 0}
 --- !u!1 &1864550919047423355
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +337,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4501462921993505051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8283970371713361426}
+        m_TargetAssemblyTypeName: ButtonsControler, Assembly-CSharp
+        m_MethodName: DeleteTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2572105196898713629
 GameObject:
   m_ObjectHideFlags: 0
