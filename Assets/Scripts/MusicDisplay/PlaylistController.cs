@@ -14,13 +14,20 @@ public class PlaylistController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.volume = 0.01f;
         audioSource.playOnAwake = false;
-        audioSource.loop = true;
         PlayMusic();
+    }
+
+    void Uptade() 
+    {
+        if(!audioSource.isPlaying && !isPaused) //precisa ser refatorado... não funfa legal 
+        {
+            NextSong();
+        }
     }
 
     void PlayMusic()
     {
-        if (musicList.Length > 0)
+        if(musicList.Length > 0)
         {
             audioSource.clip = musicList[currentTrackIndex];
             audioSource.Play();
@@ -47,16 +54,16 @@ public class PlaylistController : MonoBehaviour
 
     public void NextSong()
     {
-        if (musicList.Length == 0) return;
+        if(musicList.Length == 0) return; // Verifica se existem músicas na lista 
 
-        currentTrackIndex = (currentTrackIndex + 1) % musicList.Length; 
-        audioSource.clip = musicList[currentTrackIndex];
+        currentTrackIndex = (currentTrackIndex + 1) % musicList.Length; // Pra garantir que quando o index chegar a 0 a playlist volte com o index do início
+        audioSource.clip = musicList[currentTrackIndex]; 
         audioSource.Play(); 
     }
-    
+
     public void PreviousSong()
     {
-        if (musicList.Length == 0) return;
+        if(musicList.Length == 0) return;
 
         currentTrackIndex = (currentTrackIndex - 1) % musicList.Length; 
         audioSource.clip = musicList[currentTrackIndex];
