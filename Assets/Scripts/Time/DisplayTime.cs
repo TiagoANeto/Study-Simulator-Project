@@ -31,16 +31,24 @@ public class DisplayTime : MonoBehaviour
         minutes = System.DateTime.Now.Minute;
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
 
-        ChangeBackgroundColor(hour); 
+        //ChangeBackgroundColor(hour); 
+        TesteColor(hour);
     }
 
-    private void ChangeBackgroundColor(int hour)
+    // private void ChangeBackgroundColor(int hour)
+    // {
+    //     if (hour >= 6 && hour < 12) // Manhã
+    //         cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
+    //     else if (hour >= 12 && hour < 18) // Tarde
+    //         cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
+    //     else if(hour >= 18 && hour >= 0 && hour >= 5)// Noite
+    //         cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 12) / 6f);
+    // }
+
+    private void TesteColor(int hour)
     {
-        if (hour >= 6 && hour < 12) // Manhã
-            cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
-        else if (hour >= 12 && hour < 18) // Tarde
-            cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
-        else // Noite
-            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 18) / 6f);
+        if (hour >= 6 && hour < 12) cam.backgroundColor = morningColor;
+        if (hour >= 12 && hour < 18) cam.backgroundColor = afternoonColor;
+        else cam.backgroundColor = nightColor;
     }
 }
