@@ -7,6 +7,7 @@ public class ButtonsControler : MonoBehaviour
     public GameObject panelPlaylist;
     public GameObject panelToDoList;
     public GameObject timerPomodoro;
+    public GameObject fullScreen;
 
     public void OpenPlaylist()
     {
@@ -26,5 +27,11 @@ public class ButtonsControler : MonoBehaviour
     public void DeleteTask()
     {
         Destroy(this.gameObject);
+    }
+
+    public void FullScreenButton(GameObject gameObject)
+    {
+        gameObject = fullScreen;
+        Screen.fullScreen = !Screen.fullScreen;
     }
 }
