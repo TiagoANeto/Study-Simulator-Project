@@ -17,9 +17,9 @@ public class PlaylistController : MonoBehaviour
         PlayMusic();
     }
 
-    void Uptade() 
+    void Update() 
     {
-        if(!audioSource.isPlaying && !isPaused) //precisa ser refatorado... não funfa legal 
+        if(!audioSource.isPlaying && !isPaused) 
         {
             NextSong();
         }
@@ -68,5 +68,21 @@ public class PlaylistController : MonoBehaviour
         currentTrackIndex = (currentTrackIndex - 1) % musicList.Length; 
         audioSource.clip = musicList[currentTrackIndex];
         audioSource.Play(); 
+    }
+
+    public void RandomSong()
+    {
+        if (musicList.Length == 0) return;
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, musicList.Length);
+        }
+            while (randomIndex == currentTrackIndex); // Evita tocar a mesma música na sequência 
+
+        currentTrackIndex = randomIndex;
+        audioSource.clip = musicList[currentTrackIndex];
+        audioSource.Play();
     }
 }
