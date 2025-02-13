@@ -6,7 +6,14 @@ public class Timer : MonoBehaviour
     public float minutes = 25f;
     public float seconds = 0f;
     public Text countTime;
+    public AudioClip alarmSound;
+    private AudioSource audioSource;
     private bool _isPausedTimer = true;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -26,6 +33,8 @@ public class Timer : MonoBehaviour
                 else
                 {
                     seconds = 0;
+                    audioSource.clip = alarmSound;
+                    audioSource.Play();
                 }
             }
         }
