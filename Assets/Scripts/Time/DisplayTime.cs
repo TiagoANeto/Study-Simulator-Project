@@ -35,15 +35,15 @@ public class DisplayTime : MonoBehaviour
         TesteColor(hour);
     }
 
-    // private void ChangeBackgroundColor(int hour)
-    // {
-    //     if (hour >= 6 && hour < 12) // Manhã
-    //         cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
-    //     else if (hour >= 12 && hour < 18) // Tarde
-    //         cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
-    //     else if(hour >= 18 && hour >= 0 && hour >= 5)// Noite
-    //         cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 12) / 6f);
-    // }
+    private void ChangeBackgroundColor(int hour)
+    {
+        if (hour >= 6 && hour < 12) // Manhã
+            cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
+        else if (hour >= 12 && hour < 18) // Tarde
+            cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
+        else if(hour >= 18 && hour >= 0 && hour >= 5)// Noite
+            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 12) / 6f);
+    }
 
     private void TesteColor(int hour)
     {

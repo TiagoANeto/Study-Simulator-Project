@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlaylistController : MonoBehaviour
@@ -7,6 +8,9 @@ public class PlaylistController : MonoBehaviour
     public AudioClip[] musicList;
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
+    //public Text[] musicNameList;
+    //public Text musicName;
+    private int currentName = 0; 
     private bool isPaused = false;
 
     void Start()
@@ -58,7 +62,7 @@ public class PlaylistController : MonoBehaviour
 
         currentTrackIndex = (currentTrackIndex + 1) % musicList.Length; // Pra garantir que quando o index chegar a 0 a playlist volte com o index do início
         audioSource.clip = musicList[currentTrackIndex]; 
-        audioSource.Play(); 
+        audioSource.Play();
     }
 
     public void PreviousSong()
@@ -67,7 +71,7 @@ public class PlaylistController : MonoBehaviour
 
         currentTrackIndex = (currentTrackIndex - 1) % musicList.Length; 
         audioSource.clip = musicList[currentTrackIndex];
-        audioSource.Play(); 
+        audioSource.Play();
     }
 
     public void RandomSong()
