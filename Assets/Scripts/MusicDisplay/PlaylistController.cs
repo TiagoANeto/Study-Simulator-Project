@@ -8,9 +8,8 @@ public class PlaylistController : MonoBehaviour
     public AudioClip[] musicList;
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
-    //public Text[] musicNameList;
-    //public Text musicName;
-    private int currentName = 0; 
+    public string[] musicName;
+    public Text musicNameDisplay;
     private bool isPaused = false;
 
     void Start()
@@ -35,6 +34,7 @@ public class PlaylistController : MonoBehaviour
         {
             audioSource.clip = musicList[currentTrackIndex];
             audioSource.Play();
+            musicNameDisplay.text = musicName[currentTrackIndex];
         }
     }
 
@@ -63,6 +63,7 @@ public class PlaylistController : MonoBehaviour
         currentTrackIndex = (currentTrackIndex + 1) % musicList.Length; // Pra garantir que quando o index chegar a 0 a playlist volte com o index do início
         audioSource.clip = musicList[currentTrackIndex]; 
         audioSource.Play();
+        musicNameDisplay.text = musicName[currentTrackIndex];
     }
 
     public void PreviousSong()
@@ -72,6 +73,7 @@ public class PlaylistController : MonoBehaviour
         currentTrackIndex = (currentTrackIndex - 1) % musicList.Length; 
         audioSource.clip = musicList[currentTrackIndex];
         audioSource.Play();
+        musicNameDisplay.text = musicName[currentTrackIndex];
     }
 
     public void RandomSong()
@@ -88,5 +90,6 @@ public class PlaylistController : MonoBehaviour
         currentTrackIndex = randomIndex;
         audioSource.clip = musicList[currentTrackIndex];
         audioSource.Play();
+        musicNameDisplay.text = musicName[currentTrackIndex];
     }
 }

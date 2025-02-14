@@ -1699,8 +1699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.746, y: 64}
-  m_SizeDelta: {x: 178.89, y: 30}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 64}
+  m_SizeDelta: {x: 331.5543, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599188256
 MonoBehaviour:
@@ -7459,7 +7459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: -457}
+  m_AnchoredPosition: {x: 0, y: -457}
   m_SizeDelta: {x: 153.399, y: 55.718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145057274
@@ -7482,6 +7482,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9991c23e45ab0f4583e692617f7923d, type: 3}
   - {fileID: 8300000, guid: 5e3ebdbe862b8854bb98bee9f27dd7a0, type: 3}
   - {fileID: 8300000, guid: c6661e28dcf579f42b0f4855df5f8ac1, type: 3}
+  musicName:
+  - this girl Elijah Who
+  - Cup of Coffee - SpoonBeats
+  - Yesterday - chief.
+  - "I\xB4m Fine - Hentaidesu"
+  - Meteor Shower - drkmnd, Ambulo
+  - Lunar Drive - Mondo Loops
+  - Wool Gloves - INKY!
+  musicNameDisplay: {fileID: 599188256}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
