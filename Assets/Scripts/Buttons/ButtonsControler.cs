@@ -43,7 +43,10 @@ public class ButtonsControler : MonoBehaviour
 
     public void FullScreenButton(GameObject gameObject)
     {
-        gameObject = fullScreen;
-        Screen.fullScreen = !Screen.fullScreen;
+        if(Input.GetKeyDown("Escape"))
+        {
+            gameObject = fullScreen;
+            Screen.fullScreen = !Screen.fullScreen;
+        }
     }
 }
