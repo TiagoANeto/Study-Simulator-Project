@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     public float minutes = 25f;
     public float seconds = 0f;
-    public Text countTime;
+    public TMP_Text countTime;
     public AudioClip alarmSound;
     private AudioSource audioSource;
     private bool _isPausedTimer = true;
