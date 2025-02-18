@@ -6,6 +6,7 @@ public class ButtonsControler : MonoBehaviour
 {
     public GameObject panelPlaylist;
     public GameObject panelToDoList;
+    public GameObject panelSettings;
     public GameObject timerPomodoro;
     public GameObject fullScreen;
 
@@ -22,6 +23,11 @@ public class ButtonsControler : MonoBehaviour
     public void OpenPomodoroTimer()
     {
         timerPomodoro.SetActive(!timerPomodoro.activeInHierarchy);
+    }
+
+    public void OpenSettings()
+    {
+        panelSettings.SetActive(!panelSettings.activeInHierarchy);
     }
 
     public void DeleteTask()
