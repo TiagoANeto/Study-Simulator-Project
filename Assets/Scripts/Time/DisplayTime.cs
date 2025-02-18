@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class DisplayTime : MonoBehaviour
 {
     [Header("Variáveis para aramazenar a hora do sistema local")]
     [Space(10)]
 
-    [SerializeField] private Text displayHour;
+    [SerializeField] private TMP_Text displayHour;
     [SerializeField] private int hour;
     [SerializeField] private int minutes;
 

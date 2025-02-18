@@ -8,6 +8,7 @@ public class ButtonsControler : MonoBehaviour
     public GameObject panelToDoList;
     public GameObject panelSettings;
     public GameObject timerPomodoro;
+    public GameObject slidersNoise;
     public GameObject fullScreen;
 
     public void OpenPlaylist()
@@ -28,6 +29,11 @@ public class ButtonsControler : MonoBehaviour
     public void OpenSettings()
     {
         panelSettings.SetActive(!panelSettings.activeInHierarchy);
+    }
+
+    public void OpenSlidersNoise()
+    {
+        slidersNoise.SetActive(!slidersNoise.activeInHierarchy);
     }
 
     public void DeleteTask()

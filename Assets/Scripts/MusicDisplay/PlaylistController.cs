@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class PlaylistController : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class PlaylistController : MonoBehaviour
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
     public string[] musicName;
-    public Text musicNameDisplay;
+    public TMP_Text musicNameDisplay;
     private bool isPaused = false;
 
     void Start()
