@@ -6,10 +6,12 @@ using UnityEngine;
 public class SliderController : MonoBehaviour
 {
     AudioSource audioSource; 
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     public void SoundEffectsVolume(float value)
     {
         audioSource.volume = value;
