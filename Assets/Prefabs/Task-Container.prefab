@@ -140,6 +140,7 @@ MonoBehaviour:
   panelToDoList: {fileID: 0}
   panelSettings: {fileID: 0}
   timerPomodoro: {fileID: 0}
+  slidersNoise: {fileID: 0}
   fullScreen: {fileID: 0}
 --- !u!1 &1938798951511406738
 GameObject:
