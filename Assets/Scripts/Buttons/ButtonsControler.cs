@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class ButtonsControler : MonoBehaviour
 {
+    #region panels Gameobject
+    
     public GameObject panelPlaylist;
     public GameObject panelToDoList;
     public GameObject panelSettings;
     public GameObject timerPomodoro;
     public GameObject slidersNoise;
     public GameObject fullScreen;
+
+    #endregion
 
     public void OpenPlaylist()
     {
