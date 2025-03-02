@@ -40,11 +40,6 @@ public class ButtonsControler : MonoBehaviour
         slidersNoise.SetActive(!slidersNoise.activeInHierarchy);
     }
 
-    public void DeleteTask()
-    {
-        Destroy(this.gameObject);
-    }
-
     public void FullScreenButton(GameObject gameObject)
     {
         if(Input.GetKeyDown("Escape"))
