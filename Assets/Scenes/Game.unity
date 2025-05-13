@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 110031576}
   - component: {fileID: 110031575}
   m_Layer: 5
-  m_Name: Input - Set Timer
+  m_Name: Input - Set Timer FocusMinutes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2429,7 +2429,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1973223961}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: AlarmToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &476942038
 GameObject:
@@ -10157,7 +10169,7 @@ GameObject:
   - component: {fileID: 1793046896}
   - component: {fileID: 1793046895}
   m_Layer: 5
-  m_Name: Input - Set Timer (1)
+  m_Name: Input - Set Timer ShortBreak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10414,7 +10426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Short Break
+  m_text: Long Break
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59bdec81ae11fc344a39ea01d96a5e29, type: 2}
   m_sharedMaterial: {fileID: -8289382951017285277, guid: 59bdec81ae11fc344a39ea01d96a5e29,
@@ -11247,6 +11259,7 @@ MonoBehaviour:
   minutes: 25
   seconds: 0
   countTime: {fileID: 188082319}
+  alarmToggle: {fileID: 469619219}
   alarmSound: {fileID: 8300000, guid: 2aea89ca157c4a746a7d4c06ebf0660e, type: 3}
 --- !u!82 &1973223962
 AudioSource:
@@ -11793,7 +11806,7 @@ GameObject:
   - component: {fileID: 1989355241}
   - component: {fileID: 1989355240}
   m_Layer: 5
-  m_Name: Input - Set Timer (2)
+  m_Name: Input - Set Timer LongBreak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

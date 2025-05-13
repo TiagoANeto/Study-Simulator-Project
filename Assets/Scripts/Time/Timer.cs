@@ -7,16 +7,17 @@ public class Timer : MonoBehaviour
     public float minutes = 25f;
     public float seconds = 0f;
     public TMP_Text countTime;
+    public Toggle alarmToggle;
     public AudioClip alarmSound;
     private AudioSource audioSource;
     private bool _isPausedTimer = true;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void Update()
     {
         if (_isPausedTimer) return; 
 
@@ -34,8 +35,13 @@ public class Timer : MonoBehaviour
                 else
                 {
                     seconds = 0;
-                    audioSource.clip = alarmSound;
-                    audioSource.Play();
+
+                    if(alarmToggle.isOn)
+                    {
+                        audioSource.clip = alarmSound;
+                        audioSource.Play(); 
+                    }
+                    
                 }
             }
         }
