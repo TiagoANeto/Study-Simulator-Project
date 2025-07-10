@@ -10,23 +10,23 @@ public class SettingsController : MonoBehaviour
 
     public void PanelTimerSettings()
     {
-        this.panelTimerSettings.SetActive(!panelTimerSettings.activeInHierarchy);
-        this.panelPlaylistSettings.SetActive(false);
-        this.panelStopwatch.SetActive(false);
+        panelTimerSettings.SetActive(!panelTimerSettings.activeInHierarchy);
+        panelPlaylistSettings.SetActive(false);
+        panelStopwatch.SetActive(false);
     }
 
     public void PanelPlaylistSettings()
     {
-        this.panelPlaylistSettings.SetActive(!panelPlaylistSettings.activeInHierarchy);
-        this.panelTimerSettings.SetActive(false);
-        this.panelStopwatch.SetActive(false);
+        panelPlaylistSettings.SetActive(!panelPlaylistSettings.activeInHierarchy);
+        panelTimerSettings.SetActive(false);
+        panelStopwatch.SetActive(false);
     }
 
     public void PanelStopwatch()
     {
-        this.panelStopwatch.SetActive(!panelStopwatch.activeInHierarchy);
-        this.panelTimerSettings.SetActive(false);
-        this.panelPlaylistSettings.SetActive(false);
+        panelStopwatch.SetActive(!panelStopwatch.activeInHierarchy);
+        panelTimerSettings.SetActive(false);
+        panelPlaylistSettings.SetActive(false);
     }
 
 }

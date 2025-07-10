@@ -7,19 +7,15 @@ public class PlaylistController : MonoBehaviour
 {
     #region declarations
 
-    [Header("Lista de músicas adicionadas a playlist")]
-    [Space(10)]
+    [Header("Lista de músicas adicionadas a playlist")] [Space(10)]
     public AudioClip[] musicList;
 
-    [Header("Lista com os nomes do criadores das músicas da playlist")]
-    [Space(10)]
+    [Header("Lista com os nomes do criadores das músicas da playlist")] [Space(10)]
     public string[] musicName;
 
-    [Header("Variável responsavel por atualizar o display com o nomes das músicas e artistas")]
-    [Space(10)]
+    [Header("Variável responsavel por atualizar o display com o nomes das músicas e artistas")] [Space(10)]
     public TMP_Text musicNameDisplay;
 
-    [Space(10)]
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
     private bool isPaused = false;
@@ -42,10 +38,12 @@ public class PlaylistController : MonoBehaviour
         }
     }
 
-    /* método principal responsável pela reprodução das músicas da playlist, 
-    ele percorre a lista de músicas e verifica se ela não está vazia, se existir ao menos uma música na lista, 
-    ele a reproduz e atualiza no display, com o nome da som atual e seu respectivo artista */
     
+    /// <summary>
+    /// método principal responsável pela reprodução das músicas da playlist, 
+    /// ele percorre a lista de músicas e verifica se ela não está vazia, se existir ao menos uma música na lista, 
+    /// ele a reproduz e atualiza no display, com o nome da som atual e seu respectivo artista
+    /// </summary>
     void PlayMusic() 
     {
         if(musicList.Length > 0)
