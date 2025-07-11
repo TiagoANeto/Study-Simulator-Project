@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
-using Unity.Mathematics;
 
 public class DisplayTime : MonoBehaviour
 {
@@ -14,13 +14,15 @@ public class DisplayTime : MonoBehaviour
     [SerializeField] private string currentDate;
 
 
-    [Header("Cores para mudança de backgrond ao longo do dia")] [Space(10)]
+    [Header("Controladores Mudanças ao longo do dia")] [Space(10)]
     public Color morningColor;
     public Color afternoonColor;
     public Color nightColor;
     public Camera cam;
     public GameObject nightLight;
     public GameObject dayLight;
+    public GameObject dayWindown;
+    public GameObject nightWindown;
 
     void Start()
     {
@@ -35,30 +37,54 @@ public class DisplayTime : MonoBehaviour
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
         displayDate.text = currentDate;
         
-        ChangeBackgroundColor(hour); 
+        ChangeAmbience(hour); 
     }
 
-    private void ChangeBackgroundColor(int hour)
+
+    //Preciso pensar em um jeito de deixar uma única paleta de cores para cada parte de dia e a transição ser feita entra elas
+    //por exemplo: Uma paleta de tons quente e aconchegantes para manhã que giram em torno de rosa e amarelo.
+    //Já a tarde seria um tom de paleta baseado em amarelo e laranja, e noite tons de azul e roxo.
+    //Ao invés de serem feitas transições de cores bruscas como está nesse momento, preciso achar tons que combinem.
+    private void ChangeAmbience(int hour)
     {
         if (hour >= 6 && hour < 12) //Manhã
         {
             cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
+
+            dayLight.SetActive(true);
             nightLight.SetActive(false);
+
+            dayWindown.SetActive(true);
+            nightWindown.SetActive(false);
         }
 
         else if (hour >= 12 && hour < 18) //Tarde
         {
             cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
+
             dayLight.SetActive(true);
             nightLight.SetActive(false);
+
+            dayWindown.SetActive(true);
+            nightWindown.SetActive(false);
         }
 
-        else if (hour >= 18 && hour >= 0 && hour >= 5) //Noite
+        else // Noite: das 18h até 5h59
         {
-            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, (hour - 12) / 6f);
+            float t;
+            if (hour >= 18 && hour < 24) // entre 18h e 23h
+                t = (hour - 18) / 6f;
+            else // entre 0h e 5h
+                t = (hour + 6) / 12f; // mapeando 0h–5h para uma transição suave
+
+            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, t);
+
             dayLight.SetActive(false);
             nightLight.SetActive(true);
+
+            nightWindown.SetActive(true);
+            dayWindown.SetActive(false);
         }
-            
+
     }
 }
