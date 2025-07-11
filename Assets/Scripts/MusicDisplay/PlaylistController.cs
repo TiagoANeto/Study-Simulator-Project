@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlaylistController : MonoBehaviour
 {
@@ -16,7 +15,10 @@ public class PlaylistController : MonoBehaviour
     [Header("Variável responsavel por atualizar o display com o nomes das músicas e artistas")] [Space(10)]
     public TMP_Text musicNameDisplay;
 
+    [SerializeField] private Slider musicSlider;
     private AudioSource audioSource;
+    private string volumeKey = "AudioMusicMaster";
+    private string sliderUIKey = "UISliderValue";
     private int currentTrackIndex = 0;
     private bool isPaused = false;
 
@@ -25,9 +27,18 @@ public class PlaylistController : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.volume = 0.01f;
         audioSource.playOnAwake = false;
         PlayMusic();
+
+        if (PlayerPrefs.HasKey(volumeKey))
+        {
+            audioSource.volume = PlayerPrefs.GetFloat(volumeKey);
+            musicSlider.value = PlayerPrefs.GetFloat(sliderUIKey);
+        }
+        else
+        {
+            audioSource.volume = 0.01f;
+        }
     }
 
     void Update() 
@@ -54,9 +65,13 @@ public class PlaylistController : MonoBehaviour
         }
     }
 
-    public void PlaylistVolume(float value) // metodo para botão de volume controlado por um slider 
+    public void PlaylistVolume(float value)
     {
         audioSource.volume = value;
+        PlayerPrefs.SetFloat("AudioMusicMaster", value);
+        PlayerPrefs.SetFloat("UISliderValue", musicSlider.value);
+        PlayerPrefs.Save();
+        
     }
 
     public void ButtonMusicPause() // metodo para botão de pausa estilo switch, apenas verifica se a música está reproduzindo ou não, por meio de uma variavel boleana e faz os inversos da lógica

@@ -17342,6 +17342,7 @@ MonoBehaviour:
   - Lunar Drive - Mondo Loops
   - Wool Gloves - INKY!
   musicNameDisplay: {fileID: 599188258}
+  musicSlider: {fileID: 139153681}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
