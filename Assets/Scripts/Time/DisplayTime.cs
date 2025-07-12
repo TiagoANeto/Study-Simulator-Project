@@ -15,9 +15,9 @@ public class DisplayTime : MonoBehaviour
 
 
     [Header("Controladores Mudanças ao longo do dia")] [Space(10)]
-    public Color morningColor;
-    public Color afternoonColor;
-    public Color nightColor;
+    
+    //De 0 a 2 cores da manhã - de 3 a 5 cores da tarde - de 6 a 8 cores da noite
+    public Color[] backgroundColors = { new Color(), new Color(), new Color(), new Color(), new Color(), new Color() };
     public Camera cam;
     public GameObject nightLight;
     public GameObject dayLight;
@@ -49,7 +49,7 @@ public class DisplayTime : MonoBehaviour
     {
         if (hour >= 6 && hour < 12) //Manhã
         {
-            cam.backgroundColor = Color.Lerp(nightColor, morningColor, (hour - 6) / 6f);
+            cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
 
             dayLight.SetActive(true);
             nightLight.SetActive(false);
@@ -60,7 +60,7 @@ public class DisplayTime : MonoBehaviour
 
         else if (hour >= 12 && hour < 18) //Tarde
         {
-            cam.backgroundColor = Color.Lerp(morningColor, afternoonColor, (hour - 12) / 6f);
+            cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
 
             dayLight.SetActive(true);
             nightLight.SetActive(false);
@@ -77,7 +77,7 @@ public class DisplayTime : MonoBehaviour
             else // entre 0h e 5h
                 t = (hour + 6) / 12f; // mapeando 0h–5h para uma transição suave
 
-            cam.backgroundColor = Color.Lerp(afternoonColor, nightColor, t);
+            cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
 
             dayLight.SetActive(false);
             nightLight.SetActive(true);
