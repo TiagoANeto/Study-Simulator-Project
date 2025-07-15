@@ -19,6 +19,7 @@ public class SaveController : MonoBehaviour
 
     void Update()
     {
+        //Botões para debugar, savamento feito de forma automática e o load sera implementado do forma automática também
         if (Input.GetKeyDown(KeyCode.S))
         {
             Save();
