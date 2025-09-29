@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public TMP_Text countTime;
     public Toggle alarmToggle;
     public AudioClip alarmSound;
+    public TMP_InputField inputMinutes;
     private AudioSource audioSource;
     private bool _isPausedTimer = true;
 
@@ -45,6 +46,7 @@ public class Timer : MonoBehaviour
                 }
             }
         }
+        minutes = int.Parse(inputMinutes.text);
         UpdateUIText();
     }
 

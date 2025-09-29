@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414668, b: 0.12107805, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273167, g: 0.13414647, b: 0.12107788, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16433,6 +16433,7 @@ MonoBehaviour:
   countTime: {fileID: 188082319}
   alarmToggle: {fileID: 469619219}
   alarmSound: {fileID: 8300000, guid: 2aea89ca157c4a746a7d4c06ebf0660e, type: 3}
+  inputMinutes: {fileID: 110031575}
 --- !u!82 &1973223962
 AudioSource:
   m_ObjectHideFlags: 0
