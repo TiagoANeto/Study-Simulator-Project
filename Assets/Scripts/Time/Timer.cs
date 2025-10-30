@@ -4,23 +4,27 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float minutes = 25f;
+    [Header("Timer Config")]
+    public float minutes = 50f;
     public float seconds = 0f;
     public TMP_Text countTime;
+
+    [Header("Options")]
     public Toggle alarmToggle;
     public AudioClip alarmSound;
-    public TMP_InputField inputMinutes;
+
     private AudioSource audioSource;
     private bool _isPausedTimer = true;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        UpdateUIText();
     }
 
     private void Update()
     {
-        if (_isPausedTimer) return; 
+        if (_isPausedTimer) return;
 
         if (minutes > 0 || seconds > 0)
         {
@@ -36,17 +40,17 @@ public class Timer : MonoBehaviour
                 else
                 {
                     seconds = 0;
+                    _isPausedTimer = true;
 
-                    if(alarmToggle.isOn)
+                    if (alarmToggle.isOn && alarmSound != null)
                     {
                         audioSource.clip = alarmSound;
-                        audioSource.Play(); 
+                        audioSource.Play();
                     }
-                    
                 }
             }
         }
-        minutes = int.Parse(inputMinutes.text);
+
         UpdateUIText();
     }
 
@@ -60,30 +64,17 @@ public class Timer : MonoBehaviour
         _isPausedTimer = !_isPausedTimer;
     }
 
-    public void AddTime()
-    {
-        minutes += 5f;
-        UpdateUIText();
-    }
-
-    public void RemoveTime()
-    {
-        if (minutes >= 5)
-        {
-            minutes -= 5f;
-        }
-        else
-        {
-            minutes = 0;
-            seconds = 0;
-        }
-        UpdateUIText();
-    }
-
     public void ResetTimer()
     {
-        minutes = 0;
-        seconds = 0;
+        _isPausedTimer = true;
+        seconds = 0f;
+        UpdateUIText();
+    }
+
+    public void SetTime(float newMinutes)
+    {
+        minutes = newMinutes;
+        seconds = 0f;
         UpdateUIText();
     }
 }
