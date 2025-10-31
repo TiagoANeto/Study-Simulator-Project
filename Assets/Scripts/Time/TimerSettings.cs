@@ -16,8 +16,8 @@ public class TimerSettings : MonoBehaviour
     [Header("References")]
     public Timer timer; 
 
-    private float pomodoroTime = 25f;
-    private float shortBreakTime = 5f;
+    private float pomodoroTime = 50f;
+    private float shortBreakTime = 10f;
     private float longBreakTime = 15f;
 
     private void Start()

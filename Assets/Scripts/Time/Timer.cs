@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
     public Toggle alarmToggle;
     public AudioClip alarmSound;
 
+    public Sprite[] spritesButton;
+    public Image imageSwitch;
     private AudioSource audioSource;
     private bool _isPausedTimer = true;
 
@@ -20,6 +22,7 @@ public class Timer : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         UpdateUIText();
+        UpdateButtonSprite();
     }
 
     private void Update()
@@ -41,6 +44,7 @@ public class Timer : MonoBehaviour
                 {
                     seconds = 0;
                     _isPausedTimer = true;
+                    UpdateButtonSprite();
 
                     if (alarmToggle.isOn && alarmSound != null)
                     {
@@ -62,6 +66,21 @@ public class Timer : MonoBehaviour
     public void StartPauseTimer()
     {
         _isPausedTimer = !_isPausedTimer;
+        UpdateButtonSprite();
+        
+    }
+
+    private void UpdateButtonSprite()
+    {
+        // spritesButton[0] = Play
+        // spritesButton[1] = Pause
+        if (imageSwitch.sprite == spritesButton[0])
+        {
+            imageSwitch.sprite = spritesButton[1];
+            return;
+        }
+
+        imageSwitch.sprite = spritesButton[0];
     }
 
     public void ResetTimer()
