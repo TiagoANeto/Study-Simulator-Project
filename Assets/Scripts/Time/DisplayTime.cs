@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DisplayTime : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class DisplayTime : MonoBehaviour
     public GameObject dayLight;
     public GameObject dayWindown;
     public GameObject nightWindown;
+    public GameObject rainWindown;
+    public GameObject rainVfx;
+    public GameObject sunRaysVfx;
+
+    public Slider sliderRain;
 
     void Start()
     {
@@ -36,8 +42,9 @@ public class DisplayTime : MonoBehaviour
         currentDate = System.DateTime.UtcNow.ToString("dd/MM/yy");
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
         displayDate.text = currentDate;
-        
-        ChangeAmbience(hour); 
+
+        //ChangeAmbience(hour);
+        ChangeAmbienceRain();
     }
 
 
@@ -45,46 +52,67 @@ public class DisplayTime : MonoBehaviour
     //por exemplo: Uma paleta de tons quente e aconchegantes para manhã que giram em torno de rosa e amarelo.
     //Já a tarde seria um tom de paleta baseado em amarelo e laranja, e noite tons de azul e roxo.
     //Ao invés de serem feitas transições de cores bruscas como está nesse momento, preciso achar tons que combinem.
-    private void ChangeAmbience(int hour)
+    // private void ChangeAmbience(int hour)
+    // {
+    //     if (hour >= 6 && hour < 12) //Manhã
+    //     {
+    //         cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
+
+    //         dayLight.SetActive(true);
+    //         nightLight.SetActive(false);
+
+    //         dayWindown.SetActive(true);
+    //         nightWindown.SetActive(false);
+
+    //         sunRaysVfx.SetActive(true);
+    //     }
+
+    //     else if (hour >= 12 && hour < 18) //Tarde
+    //     {
+    //         cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
+
+    //         dayLight.SetActive(true);
+    //         nightLight.SetActive(false);
+
+    //         dayWindown.SetActive(true);
+    //         nightWindown.SetActive(false);
+
+    //         sunRaysVfx.SetActive(true);
+    //     }
+
+    //     else // Noite: das 18h até 5h59
+    //     {
+    //         float t;
+    //         if (hour >= 18 && hour < 24) // entre 18h e 23h
+    //             t = (hour - 18) / 6f;
+    //         else // entre 0h e 5h
+    //             t = (hour + 6) / 12f; // mapeando 0h–5h para uma transição suave
+
+    //         cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
+
+    //         dayLight.SetActive(false);
+    //         nightLight.SetActive(true);
+
+    //         nightWindown.SetActive(true);
+    //         dayWindown.SetActive(false);
+
+    //         sunRaysVfx.SetActive(false);
+    //     }
+    // }
+
+    private void ChangeAmbienceRain()
     {
-        if (hour >= 6 && hour < 12) //Manhã
+        if (sliderRain.value >= 0.01f)
         {
-            cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
-
-            dayLight.SetActive(true);
-            nightLight.SetActive(false);
-
-            dayWindown.SetActive(true);
+            rainWindown.SetActive(true);
+            rainVfx.SetActive(true);
             nightWindown.SetActive(false);
         }
-
-        else if (hour >= 12 && hour < 18) //Tarde
+        else
         {
-            cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
-
-            dayLight.SetActive(true);
-            nightLight.SetActive(false);
-
-            dayWindown.SetActive(true);
-            nightWindown.SetActive(false);
-        }
-
-        else // Noite: das 18h até 5h59
-        {
-            float t;
-            if (hour >= 18 && hour < 24) // entre 18h e 23h
-                t = (hour - 18) / 6f;
-            else // entre 0h e 5h
-                t = (hour + 6) / 12f; // mapeando 0h–5h para uma transição suave
-
-            cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
-
-            dayLight.SetActive(false);
-            nightLight.SetActive(true);
-
             nightWindown.SetActive(true);
-            dayWindown.SetActive(false);
+            rainWindown.SetActive(false);
+            rainVfx.SetActive(false);
         }
-
     }
 }
