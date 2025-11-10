@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class DisplayTime : MonoBehaviour
 {
-    [Header("Variáveis para aramazenar a hora e data do sistema local")] [Space(10)]
+    [Header("Variáveis para armazenar hora e data do sistema local")] [Space(10)]
     [SerializeField] private TMP_Text displayHour;
     [SerializeField] private TMP_Text displayDate;
     [SerializeField] private int hour;
@@ -15,13 +12,13 @@ public class DisplayTime : MonoBehaviour
     [SerializeField] private string currentDate;
 
 
-    [Header("Controladores Mudanças ao longo do dia")] [Space(10)]
-    
+    [Header("Controladores de ambiente")] [Space(10)]
     //De 0 a 2 cores da manhã - de 3 a 5 cores da tarde - de 6 a 8 cores da noite
     public Color[] backgroundColors = { new Color(), new Color(), new Color(), new Color(), new Color(), new Color() };
     public Camera cam;
-    public GameObject nightLight;
-    public GameObject dayLight;
+    public GameObject ambienceNightLight;
+    public GameObject ambienceDayLight;
+    public GameObject sunLight;
     public GameObject dayWindown;
     public GameObject nightWindown;
     public GameObject rainWindown;
@@ -33,6 +30,7 @@ public class DisplayTime : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        
     }
 
     void Update()
@@ -43,41 +41,43 @@ public class DisplayTime : MonoBehaviour
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
         displayDate.text = currentDate;
 
-        //ChangeAmbience(hour);
-        ChangeAmbienceRain();
+        // PresetSunnyDay();
+        // PresetNight();
+         PresetRain();
+        //DefaultAmbience(hour);
     }
-
-
-    //Preciso pensar em um jeito de deixar uma única paleta de cores para cada parte de dia e a transição ser feita entra elas
-    //por exemplo: Uma paleta de tons quente e aconchegantes para manhã que giram em torno de rosa e amarelo.
-    //Já a tarde seria um tom de paleta baseado em amarelo e laranja, e noite tons de azul e roxo.
-    //Ao invés de serem feitas transições de cores bruscas como está nesse momento, preciso achar tons que combinem.
-    // private void ChangeAmbience(int hour)
+    
+    // private void DefaultAmbience(int hour)
     // {
     //     if (hour >= 6 && hour < 12) //Manhã
     //     {
     //         cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
 
-    //         dayLight.SetActive(true);
-    //         nightLight.SetActive(false);
+    //         sunLight.SetActive(true);
+    //         sunRaysVfx.SetActive(true);
+
+    //         ambienceDayLight.SetActive(true);
+    //         ambienceNightLight.SetActive(false);
 
     //         dayWindown.SetActive(true);
     //         nightWindown.SetActive(false);
 
-    //         sunRaysVfx.SetActive(true);
     //     }
 
+    //     //Depois preciso pensar em um preset para tarde e ajeitar aqui
     //     else if (hour >= 12 && hour < 18) //Tarde
     //     {
     //         cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
 
-    //         dayLight.SetActive(true);
-    //         nightLight.SetActive(false);
+    //         sunLight.SetActive(true);
+    //         sunRaysVfx.SetActive(true);
+
+    //         ambienceDayLight.SetActive(true);
+    //         ambienceNightLight.SetActive(false);
 
     //         dayWindown.SetActive(true);
     //         nightWindown.SetActive(false);
 
-    //         sunRaysVfx.SetActive(true);
     //     }
 
     //     else // Noite: das 18h até 5h59
@@ -86,12 +86,12 @@ public class DisplayTime : MonoBehaviour
     //         if (hour >= 18 && hour < 24) // entre 18h e 23h
     //             t = (hour - 18) / 6f;
     //         else // entre 0h e 5h
-    //             t = (hour + 6) / 12f; // mapeando 0h–5h para uma transição suave
+    //             t = (hour + 6) / 12f; // mapeando 0h–5h pra ter uma transição suave
 
     //         cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
 
-    //         dayLight.SetActive(false);
-    //         nightLight.SetActive(true);
+    //         sunLight.SetActive(false);
+    //         ambienceNightLight.SetActive(true);
 
     //         nightWindown.SetActive(true);
     //         dayWindown.SetActive(false);
@@ -100,19 +100,57 @@ public class DisplayTime : MonoBehaviour
     //     }
     // }
 
-    private void ChangeAmbienceRain()
+    public void PresetSunnyDay()
     {
-        if (sliderRain.value >= 0.01f)
+        ambienceDayLight.SetActive(true);
+        sunLight.SetActive(true);
+        dayWindown.SetActive(true);
+        sunRaysVfx.SetActive(true);
+
+        ambienceNightLight.SetActive(false);
+        nightWindown.SetActive(false);
+
+        string hexDayColorCode = "#E7A553";
+        Color backgroundDayColor;
+        ColorUtility.TryParseHtmlString(hexDayColorCode, out backgroundDayColor);
+        cam.backgroundColor = backgroundDayColor;
+    }
+    
+    public void PresetNight()
+    {
+        ambienceNightLight.SetActive(true);
+        nightWindown.SetActive(true);
+
+        ambienceDayLight.SetActive(false);
+        sunLight.SetActive(false);
+        dayWindown.SetActive(false);
+        sunRaysVfx.SetActive(false);
+
+        string hexNightColorCode = "#292965";
+        Color backgroundNightColor;
+        ColorUtility.TryParseHtmlString(hexNightColorCode, out backgroundNightColor);
+        cam.backgroundColor = backgroundNightColor;
+    }
+
+    private void PresetRain()
+    {
+        if (sliderRain.value >= 0.01)
         {
             rainWindown.SetActive(true);
             rainVfx.SetActive(true);
+
             nightWindown.SetActive(false);
+            ambienceNightLight.SetActive(false);
+            ambienceDayLight.SetActive(false);
+            sunLight.SetActive(false);
+            dayWindown.SetActive(false);
+            sunRaysVfx.SetActive(false);
         }
         else
         {
-            nightWindown.SetActive(true);
             rainWindown.SetActive(false);
             rainVfx.SetActive(false);
         }
+        
     }
 }
