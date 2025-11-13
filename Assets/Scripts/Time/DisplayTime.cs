@@ -145,12 +145,17 @@ public class DisplayTime : MonoBehaviour
             sunLight.SetActive(false);
             dayWindown.SetActive(false);
             sunRaysVfx.SetActive(false);
+
+            string hexRainColorCode = "#3d5566ff";
+            Color backgroundRainColor;
+            ColorUtility.TryParseHtmlString(hexRainColorCode, out backgroundRainColor);
+            cam.backgroundColor = backgroundRainColor;
         }
         else
         {
             rainWindown.SetActive(false);
             rainVfx.SetActive(false);
         }
-        
+
     }
 }
