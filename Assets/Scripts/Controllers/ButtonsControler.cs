@@ -13,6 +13,10 @@ public class ButtonsControler : MonoBehaviour
     [SerializeField] private GameObject slidersNoise;
     [SerializeField] private GameObject fullScreen;
 
+    public GameObject displayHourContainer; //Objeto para ser desativado na hieraquia para o stopwatch
+    public GameObject musicPlayerContainer; //Objeto para ser desativado na hieraquia para o stopwatch MusicPlayer
+
+
     #endregion
 
     public void OpenPlaylist()
@@ -38,6 +42,16 @@ public class ButtonsControler : MonoBehaviour
     public void OpenSlidersNoise()
     {
         slidersNoise.SetActive(!slidersNoise.activeInHierarchy);
+    }
+
+    public void StopWatchDisplayHour()
+    {
+        displayHourContainer.SetActive(!displayHourContainer.activeInHierarchy);
+    }
+
+    public void StopWatchMusicPlay()
+    {
+        musicPlayerContainer.SetActive(!musicPlayerContainer.activeInHierarchy);
     }
 
     public void FullScreenButton(GameObject gameObject)

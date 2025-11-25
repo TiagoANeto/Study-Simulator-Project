@@ -158,4 +158,36 @@ public class DisplayTime : MonoBehaviour
         }
 
     }
+
+    public void BackgroundColorThemeBlue()
+    {
+        string hexBlueThemeColorCode = "#60a6e7ff";
+        Color blueThemeColorCode;
+        ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
+        cam.backgroundColor = blueThemeColorCode;
+    }
+
+    public void BackgroundColorThemePurple()
+    {
+        string hexPurpleThemeColorCode = "#7E4B68";
+        Color purpleThemeColorCode;
+        ColorUtility.TryParseHtmlString(hexPurpleThemeColorCode, out purpleThemeColorCode);
+        cam.backgroundColor = purpleThemeColorCode;
+    }
+
+    public void BackgroundColorThemeRed()
+    {
+        string hexRedThemeColorCode = "#ca6969ff";
+        Color redThemeColorCode;
+        ColorUtility.TryParseHtmlString(hexRedThemeColorCode, out redThemeColorCode);
+        cam.backgroundColor = redThemeColorCode;
+    }
+
+    public void BackgroundColorThemeGreen()
+    {
+        string hexGreenThemeColorCode = "#6F8929";
+        Color greenThemeColorCode;
+        ColorUtility.TryParseHtmlString(hexGreenThemeColorCode, out greenThemeColorCode);
+        cam.backgroundColor = greenThemeColorCode;
+    }
 }
