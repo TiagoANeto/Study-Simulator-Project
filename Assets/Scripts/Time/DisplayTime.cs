@@ -169,7 +169,7 @@ public class DisplayTime : MonoBehaviour
 
     public void BackgroundColorThemePurple()
     {
-        string hexPurpleThemeColorCode = "#7E4B68";
+        string hexPurpleThemeColorCode = "#251E35";
         Color purpleThemeColorCode;
         ColorUtility.TryParseHtmlString(hexPurpleThemeColorCode, out purpleThemeColorCode);
         cam.backgroundColor = purpleThemeColorCode;
@@ -185,7 +185,7 @@ public class DisplayTime : MonoBehaviour
 
     public void BackgroundColorThemeGreen()
     {
-        string hexGreenThemeColorCode = "#6F8929";
+        string hexGreenThemeColorCode = "#203d0dff";
         Color greenThemeColorCode;
         ColorUtility.TryParseHtmlString(hexGreenThemeColorCode, out greenThemeColorCode);
         cam.backgroundColor = greenThemeColorCode;
