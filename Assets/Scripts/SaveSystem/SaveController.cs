@@ -1,57 +1,51 @@
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using System.IO;
+using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class SaveController : MonoBehaviour
 {
-    public ToDoListInterface toDoListInterface;
-    public GameObject taskPrefab;
-    public Transform grid;
+    public static SaveController Instance;
 
-    private string savePath;
+    public Transform grid;
+    public GameObject taskPrefab;
+
+    public UserCalendarData calendarData = new UserCalendarData();
+    
+    string savePath;
 
     void Awake()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "save.json");
-    }
+        Instance = this;
 
-    void Update()
-    {
-        //Botões para debugar, savamento feito de forma automática e o load sera implementado do forma automática também
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
+        savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        Load();
     }
 
     public void Save()
     {
-        TaskList dataList = new TaskList();
+        SaveData save = new SaveData();
 
         foreach (Transform child in grid)
         {
             TMP_InputField inputField = child.GetComponentInChildren<TMP_InputField>();
             Toggle toggle = child.GetComponentInChildren<Toggle>();
 
-            TaskData data = new TaskData
+            TaskData task = new TaskData()
             {
                 textTask = inputField.text,
                 isCompleted = toggle.isOn
             };
 
-            dataList.tasks.Add(data);
+            save.tasks.tasks.Add(task);
         }
 
-        string json = JsonUtility.ToJson(dataList, true);
+        string json = JsonUtility.ToJson(save, true);
         File.WriteAllText(savePath, json);
-        Debug.Log(json);
+
+        Debug.Log("SAVE OK:\n" + json);
     }
+
 
     public void Load()
     {
@@ -59,20 +53,23 @@ public class SaveController : MonoBehaviour
             return;
 
         string json = File.ReadAllText(savePath);
-        TaskList dataList = JsonUtility.FromJson<TaskList>(json);
+        SaveData save = JsonUtility.FromJson<SaveData>(json);
 
-        // limpar antigas
         foreach (Transform child in grid)
-        {
             Destroy(child.gameObject);
+
+        foreach (TaskData data in save.tasks.tasks)
+        {
+            GameObject item = Instantiate(taskPrefab, grid);
+            item.GetComponentInChildren<TMP_InputField>().text = data.textTask;
+            item.GetComponentInChildren<Toggle>().isOn = data.isCompleted;
         }
 
-        foreach (TaskData data in dataList.tasks)
-        {
-            GameObject taskGO = Instantiate(taskPrefab, grid);
-            taskGO.GetComponentInChildren<TMP_InputField>().text = data.textTask;
-            taskGO.GetComponentInChildren<Toggle>().isOn = data.isCompleted;
-        }
-        Debug.Log(json + "Itens Recarregados com Sucesso");
+        Debug.Log("LOAD OK:\n" + json);
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
     }
 }
