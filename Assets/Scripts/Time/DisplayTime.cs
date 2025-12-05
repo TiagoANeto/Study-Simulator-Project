@@ -25,12 +25,9 @@ public class DisplayTime : MonoBehaviour
     public GameObject rainVfx;
     public GameObject sunRaysVfx;
 
-    public Slider sliderRain;
-
     void Start()
     {
         cam = GetComponent<Camera>();
-        
     }
 
     void Update()
@@ -41,153 +38,60 @@ public class DisplayTime : MonoBehaviour
         displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
         displayDate.text = currentDate;
 
-        // PresetSunnyDay();
-        // PresetNight();
-         PresetRain();
-        //DefaultAmbience(hour);
+        //PresetRain();
+        DefaultAmbience(hour);
     }
     
-    // private void DefaultAmbience(int hour)
-    // {
-    //     if (hour >= 6 && hour < 12) //Manhã
-    //     {
-    //         cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
-
-    //         sunLight.SetActive(true);
-    //         sunRaysVfx.SetActive(true);
-
-    //         ambienceDayLight.SetActive(true);
-    //         ambienceNightLight.SetActive(false);
-
-    //         dayWindown.SetActive(true);
-    //         nightWindown.SetActive(false);
-
-    //     }
-
-    //     //Depois preciso pensar em um preset para tarde e ajeitar aqui
-    //     else if (hour >= 12 && hour < 18) //Tarde
-    //     {
-    //         cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
-
-    //         sunLight.SetActive(true);
-    //         sunRaysVfx.SetActive(true);
-
-    //         ambienceDayLight.SetActive(true);
-    //         ambienceNightLight.SetActive(false);
-
-    //         dayWindown.SetActive(true);
-    //         nightWindown.SetActive(false);
-
-    //     }
-
-    //     else // Noite: das 18h até 5h59
-    //     {
-    //         float t;
-    //         if (hour >= 18 && hour < 24) // entre 18h e 23h
-    //             t = (hour - 18) / 6f;
-    //         else // entre 0h e 5h
-    //             t = (hour + 6) / 12f; // mapeando 0h–5h pra ter uma transição suave
-
-    //         cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
-
-    //         sunLight.SetActive(false);
-    //         ambienceNightLight.SetActive(true);
-
-    //         nightWindown.SetActive(true);
-    //         dayWindown.SetActive(false);
-
-    //         sunRaysVfx.SetActive(false);
-    //     }
-    // }
-
-    public void PresetSunnyDay()
+    private void DefaultAmbience(int hour)
     {
-        ambienceDayLight.SetActive(true);
-        sunLight.SetActive(true);
-        dayWindown.SetActive(true);
-        sunRaysVfx.SetActive(true);
-
-        ambienceNightLight.SetActive(false);
-        nightWindown.SetActive(false);
-
-        string hexDayColorCode = "#E7A553";
-        Color backgroundDayColor;
-        ColorUtility.TryParseHtmlString(hexDayColorCode, out backgroundDayColor);
-        cam.backgroundColor = backgroundDayColor;
-    }
-    
-    public void PresetNight()
-    {
-        ambienceNightLight.SetActive(true);
-        nightWindown.SetActive(true);
-
-        ambienceDayLight.SetActive(false);
-        sunLight.SetActive(false);
-        dayWindown.SetActive(false);
-        sunRaysVfx.SetActive(false);
-
-        string hexNightColorCode = "#292965";
-        Color backgroundNightColor;
-        ColorUtility.TryParseHtmlString(hexNightColorCode, out backgroundNightColor);
-        cam.backgroundColor = backgroundNightColor;
-    }
-
-    private void PresetRain()
-    {
-        if (sliderRain.value >= 0.01)
+        if (hour >= 6 && hour < 12) //Manhã
         {
-            rainWindown.SetActive(true);
-            rainVfx.SetActive(true);
+            cam.backgroundColor = Color.Lerp(backgroundColors[0], backgroundColors[1], (hour - 6) / 6f);
 
-            nightWindown.SetActive(false);
+            sunLight.SetActive(true);
+            sunRaysVfx.SetActive(true);
+
+            ambienceDayLight.SetActive(true);
             ambienceNightLight.SetActive(false);
-            ambienceDayLight.SetActive(false);
-            sunLight.SetActive(false);
-            dayWindown.SetActive(false);
-            sunRaysVfx.SetActive(false);
 
-            string hexRainColorCode = "#3d5566ff";
-            Color backgroundRainColor;
-            ColorUtility.TryParseHtmlString(hexRainColorCode, out backgroundRainColor);
-            cam.backgroundColor = backgroundRainColor;
+            dayWindown.SetActive(true);
+            nightWindown.SetActive(false);
+
         }
-        else
+
+        //Depois preciso pensar em um preset para tarde e ajeitar aqui
+        else if (hour >= 12 && hour < 18) //Tarde
         {
-            rainWindown.SetActive(false);
-            rainVfx.SetActive(false);
+            cam.backgroundColor = Color.Lerp(backgroundColors[2], backgroundColors[3], (hour - 12) / 6f);
+
+            sunLight.SetActive(true);
+            sunRaysVfx.SetActive(true);
+
+            ambienceDayLight.SetActive(true);
+            ambienceNightLight.SetActive(false);
+
+            dayWindown.SetActive(true);
+            nightWindown.SetActive(false);
+
         }
 
-    }
+        else // Noite: das 18h até 5h59
+        {
+            float t;
+            if (hour >= 18 && hour < 24) // entre 18h e 23h
+                t = (hour - 18) / 6f;
+            else // entre 0h e 5h
+                t = (hour + 6) / 12f; // mapeando 0h–5h pra ter uma transição suave
 
-    public void BackgroundColorThemeBlue()
-    {
-        string hexBlueThemeColorCode = "#60a6e7ff";
-        Color blueThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
-        cam.backgroundColor = blueThemeColorCode;
-    }
+            cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
 
-    public void BackgroundColorThemePurple()
-    {
-        string hexPurpleThemeColorCode = "#251E35";
-        Color purpleThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexPurpleThemeColorCode, out purpleThemeColorCode);
-        cam.backgroundColor = purpleThemeColorCode;
-    }
+            sunLight.SetActive(false);
+            ambienceNightLight.SetActive(true);
 
-    public void BackgroundColorThemeRed()
-    {
-        string hexRedThemeColorCode = "#ca6969ff";
-        Color redThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexRedThemeColorCode, out redThemeColorCode);
-        cam.backgroundColor = redThemeColorCode;
-    }
+            nightWindown.SetActive(true);
+            dayWindown.SetActive(false);
 
-    public void BackgroundColorThemeGreen()
-    {
-        string hexGreenThemeColorCode = "#203d0dff";
-        Color greenThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexGreenThemeColorCode, out greenThemeColorCode);
-        cam.backgroundColor = greenThemeColorCode;
+            sunRaysVfx.SetActive(false);
+        }
     }
 }
