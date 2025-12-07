@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonsControler : MonoBehaviour
@@ -11,13 +9,26 @@ public class ButtonsControler : MonoBehaviour
     [SerializeField] private GameObject panelSettings;
     [SerializeField] private GameObject timerPomodoro;
     [SerializeField] private GameObject slidersNoise;
-    [SerializeField] private GameObject fullScreen;
+    [SerializeField] private GameObject calendar;
 
     public GameObject displayHourContainer; //Objeto para ser desativado na hieraquia para o stopwatch
     public GameObject musicPlayerContainer; //Objeto para ser desativado na hieraquia para o stopwatch MusicPlayer
 
 
     #endregion
+
+    void FixedUpdate()
+    {
+        if(calendar.activeInHierarchy == true)
+        {
+            CloseCalendar();
+        }
+
+        if(panelSettings.activeInHierarchy == true)
+        {
+            CloseSettingShotCut();
+        }
+    }
 
     public void OpenPlaylist()
     {
@@ -54,12 +65,19 @@ public class ButtonsControler : MonoBehaviour
         musicPlayerContainer.SetActive(!musicPlayerContainer.activeInHierarchy);
     }
 
-    public void FullScreenButton(GameObject gameObject)
+    public void CloseCalendar()
     {
-        if(Input.GetKeyDown("Escape"))
+        if(Input.GetKey(KeyCode.Escape))
         {
-            gameObject = fullScreen;
-            Screen.fullScreen = !Screen.fullScreen;
+            calendar.SetActive(false);
+        }
+    }
+
+    public void CloseSettingShotCut()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            panelSettings.SetActive(false);
         }
     }
 }
