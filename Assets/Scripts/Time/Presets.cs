@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+public enum PresetType { SunnyDay, Night }
 
 public class Presets : MonoBehaviour
 {
@@ -11,18 +10,23 @@ public class Presets : MonoBehaviour
     public GameObject sunLight;
     public GameObject dayWindown;
     public GameObject nightWindown;
-    public GameObject rainWindown;
-    public GameObject rainVfx;
     public GameObject sunRaysVfx;
 
-    public Slider sliderRain;
-
-    void Start()
+    private void Reset()
     {
-        cam = GetComponent<Camera>();
+        if (cam == null) cam = Camera.main;
     }
 
-    public void PresetSunnyDay()
+    public void ApplyPreset(PresetType preset)
+    {
+        switch (preset)
+        {
+            case PresetType.SunnyDay: ApplySunnyDay(); break;
+            case PresetType.Night: ApplyNight(); break;
+        }
+    }
+
+    public void ApplySunnyDay()
     {
         ambienceDayLight.SetActive(true);
         sunLight.SetActive(true);
@@ -32,13 +36,12 @@ public class Presets : MonoBehaviour
         ambienceNightLight.SetActive(false);
         nightWindown.SetActive(false);
 
-        string hexDayColorCode = "#E7A553";
         Color backgroundDayColor;
-        ColorUtility.TryParseHtmlString(hexDayColorCode, out backgroundDayColor);
+        ColorUtility.TryParseHtmlString("#E7A553", out backgroundDayColor);
         cam.backgroundColor = backgroundDayColor;
     }
-    
-    public void PresetNight()
+
+    public void ApplyNight()
     {
         ambienceNightLight.SetActive(true);
         nightWindown.SetActive(true);
@@ -48,37 +51,9 @@ public class Presets : MonoBehaviour
         dayWindown.SetActive(false);
         sunRaysVfx.SetActive(false);
 
-        string hexNightColorCode = "#292965";
         Color backgroundNightColor;
-        ColorUtility.TryParseHtmlString(hexNightColorCode, out backgroundNightColor);
+        ColorUtility.TryParseHtmlString("#292965", out backgroundNightColor);
         cam.backgroundColor = backgroundNightColor;
-    }
-
-    private void PresetRain()
-    {
-        if (sliderRain.value >= 0.01)
-        {
-            rainWindown.SetActive(true);
-            rainVfx.SetActive(true);
-
-            nightWindown.SetActive(false);
-            ambienceNightLight.SetActive(false);
-            ambienceDayLight.SetActive(false);
-            sunLight.SetActive(false);
-            dayWindown.SetActive(false);
-            sunRaysVfx.SetActive(false);
-
-            string hexRainColorCode = "#3d5566ff";
-            Color backgroundRainColor;
-            ColorUtility.TryParseHtmlString(hexRainColorCode, out backgroundRainColor);
-            cam.backgroundColor = backgroundRainColor;
-        }
-        else
-        {
-            rainWindown.SetActive(false);
-            rainVfx.SetActive(false);
-        }
-
     }
 
     public void BackgroundColorThemeBlue()

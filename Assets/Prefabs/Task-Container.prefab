@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5078618684173429726}
   - component: {fileID: 6718615517532482661}
+  - component: {fileID: 3048407077818406507}
   m_Layer: 5
   m_Name: Task-Container
   m_TagString: Untagged
@@ -138,6 +139,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   taskAddPrefab: {fileID: 0}
+--- !u!114 &3048407077818406507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093011527543209570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f77bdc1de8ffba4e811587a27069168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskText: {fileID: 2855716397925438431}
+  toggle: {fileID: 6036362907837284859}
 --- !u!1 &1938798951511406738
 GameObject:
   m_ObjectHideFlags: 0

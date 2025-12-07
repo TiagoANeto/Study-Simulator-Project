@@ -1488,7 +1488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 330585550}
         m_TargetAssemblyTypeName: Presets, Assembly-CSharp
-        m_MethodName: PresetNight
+        m_MethodName: ApplyNight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3770,10 +3770,7 @@ MonoBehaviour:
   sunLight: {fileID: 2088114312}
   dayWindown: {fileID: 1800497540}
   nightWindown: {fileID: 1490527232}
-  rainWindown: {fileID: 978733268}
-  rainVfx: {fileID: 2122585343}
   sunRaysVfx: {fileID: 1402421843}
-  sliderRain: {fileID: 1979984659}
 --- !u!114 &330585551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8322,6 +8319,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706737777}
   m_CullTransparentMesh: 1
+--- !u!1 &723858485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 723858487}
+  - component: {fileID: 723858486}
+  m_Layer: 0
+  m_Name: WeatherManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &723858486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723858485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c478070223ec64b86d547b88d8ef83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  presets: {fileID: 330585550}
+  rainWindown: {fileID: 978733268}
+  rainVfx: {fileID: 2122585343}
+  sliderRain: {fileID: 1153059621}
+  automaticMode: 0
+  automaticPreset: 0
+--- !u!4 &723858487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723858485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1080.2924, y: 547.2876, z: 23.878521}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &724125801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8500,7 +8547,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 330585550}
         m_TargetAssemblyTypeName: Presets, Assembly-CSharp
-        m_MethodName: PresetSunnyDay
+        m_MethodName: ApplySunnyDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10456,6 +10503,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 723858486}
+        m_TargetAssemblyTypeName: WeatherManager, Assembly-CSharp
+        m_MethodName: SetAutomaticMode
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1001 &907175664
 PrefabInstance:
@@ -10784,7 +10843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18231,7 +18290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22488,7 +22547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32076,6 +32135,7 @@ SceneRoots:
   - {fileID: 2088114315}
   - {fileID: 1184173779}
   - {fileID: 832575519}
+  - {fileID: 723858487}
   - {fileID: 1060462190}
   - {fileID: 1226656587}
   - {fileID: 696603572}
