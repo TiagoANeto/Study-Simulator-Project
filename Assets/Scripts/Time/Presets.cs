@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum PresetType { SunnyDay, Night }
+public enum PresetType { SunnyDay, Night, Rain }
 
 public class Presets : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class Presets : MonoBehaviour
     public GameObject nightWindown;
     public GameObject sunRaysVfx;
 
+    public GameObject rainWindown;
+    public GameObject rainVfx;
+    public Slider sliderRain;
+
+
     private void Reset()
     {
         if (cam == null) cam = Camera.main;
@@ -21,8 +27,15 @@ public class Presets : MonoBehaviour
     {
         switch (preset)
         {
-            case PresetType.SunnyDay: ApplySunnyDay(); break;
-            case PresetType.Night: ApplyNight(); break;
+            case PresetType.SunnyDay: 
+                ApplySunnyDay(); 
+                break;
+            case PresetType.Night: 
+                ApplyNight(); 
+                break;
+            case PresetType.Rain:
+                ApplyRainPreset();
+                break;
         }
     }
 
@@ -54,6 +67,23 @@ public class Presets : MonoBehaviour
         Color backgroundNightColor;
         ColorUtility.TryParseHtmlString("#292965", out backgroundNightColor);
         cam.backgroundColor = backgroundNightColor;
+    }
+
+    public void ApplyRainPreset()
+    {
+        rainWindown.SetActive(true);
+        rainVfx.SetActive(true);
+
+        ambienceNightLight.SetActive(false);
+        ambienceDayLight.SetActive(false);
+        sunLight.SetActive(false);
+        dayWindown.SetActive(false);
+        nightWindown.SetActive(false);
+        sunRaysVfx.SetActive(false);
+
+        Color rainColor;
+        ColorUtility.TryParseHtmlString("#3d5566ff", out rainColor);
+        cam.backgroundColor = rainColor;
     }
 
     public void BackgroundColorThemeBlue()

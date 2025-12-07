@@ -3771,6 +3771,9 @@ MonoBehaviour:
   dayWindown: {fileID: 1800497540}
   nightWindown: {fileID: 1490527232}
   sunRaysVfx: {fileID: 1402421843}
+  rainWindown: {fileID: 978733268}
+  rainVfx: {fileID: 2122585343}
+  sliderRain: {fileID: 1153059621}
 --- !u!114 &330585551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8349,9 +8352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   presets: {fileID: 330585550}
-  rainWindown: {fileID: 978733268}
-  rainVfx: {fileID: 2122585343}
-  sliderRain: {fileID: 1153059621}
   automaticMode: 0
   automaticPreset: 0
 --- !u!4 &723858487
@@ -13458,6 +13458,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1153059623}
         m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
         m_MethodName: SoundEffectsVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 723858486}
+        m_TargetAssemblyTypeName: WeatherManager, Assembly-CSharp
+        m_MethodName: OnRainSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

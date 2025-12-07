@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEditor.Presets;
 
 public class WeatherManager : MonoBehaviour
 {
@@ -9,17 +10,11 @@ public class WeatherManager : MonoBehaviour
 
     [Header("References")]
     public Presets presets;
-    public GameObject rainWindown;
-    public GameObject rainVfx;
-    public Slider sliderRain;
+    
 
     [Header("Automatic Mode")]
     public bool automaticMode = false; 
     public PresetType automaticPreset = PresetType.SunnyDay; 
-
-    //estado atual
-    private float rainAmount = 0f; 
-    private bool rainEnabled => rainAmount > 0.01f;
 
     private void Awake()
     {
@@ -30,13 +25,6 @@ public class WeatherManager : MonoBehaviour
     private void Start()
     {
         ApplyCurrentPreset();
-        ApplyRainState();
-    }
-
-    public void SetRainAmount(float value)
-    {
-        rainAmount = Mathf.Clamp01(value);
-        ApplyRainState();
     }
 
     public void SetPreset(PresetType preset)
@@ -44,7 +32,6 @@ public class WeatherManager : MonoBehaviour
         automaticMode = false;
         automaticPreset = preset;
         ApplyCurrentPreset();
-        ApplyRainState();
     }
 
     public void SetAutomaticMode(bool enabled)
@@ -55,14 +42,13 @@ public class WeatherManager : MonoBehaviour
             ApplyAutomaticPresetByTime();
         }
         ApplyCurrentPreset();
-        ApplyRainState();
     }
 
     private void ApplyCurrentPreset()
     {
         if (presets == null) return;
 
-        PresetType toApply = automaticMode ? automaticPreset : automaticPreset;
+        PresetType toApply = automaticMode ? automaticPreset : automaticPreset; 
         presets.ApplyPreset(toApply);
     }
 
@@ -75,21 +61,22 @@ public class WeatherManager : MonoBehaviour
             automaticPreset = PresetType.Night;
     }
 
-    private void ApplyRainState()
+    public void OnRainSliderChanged(float value)
     {
-        bool shouldRain = rainEnabled;
-        if(sliderRain.value >= 0.01f)
+        if (value > 0.01f)
         {
-            if (rainWindown != null) rainWindown.SetActive(shouldRain);
-            if (rainVfx != null) rainVfx.SetActive(shouldRain);
+            presets.ApplyRainPreset();
         }
-
-    }
-
-    public void ToggleRain()
-    {
-        float newVal = rainEnabled ? 0f : 1f;
-        if (sliderRain != null) sliderRain.value = newVal;
-        SetRainAmount(newVal);
+        else
+        {
+            if (automaticMode)
+            {
+                ApplyAutomaticPresetByTime(); 
+            }
+            else
+            {
+                presets.ApplySunnyDay();
+            }
+        }
     }
 }

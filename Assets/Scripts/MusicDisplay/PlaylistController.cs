@@ -28,7 +28,6 @@ public class PlaylistController : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-        PlayMusic();
 
         if (PlayerPrefs.HasKey(volumeKey))
         {
@@ -39,6 +38,8 @@ public class PlaylistController : MonoBehaviour
         {
             audioSource.volume = 0.01f;
         }
+
+        PlayRandomSongOnStart();
     }
 
     void Update() 
@@ -62,6 +63,22 @@ public class PlaylistController : MonoBehaviour
             audioSource.clip = musicList[currentTrackIndex];
             audioSource.Play();
             musicNameDisplay.text = musicName[currentTrackIndex];
+        }
+    }
+
+    void PlayRandomSongOnStart()
+    {
+        if(musicList.Length > 0)
+        {
+            currentTrackIndex = Random.Range(0, musicList.Length);
+            
+            audioSource.clip = musicList[currentTrackIndex];
+            audioSource.Play();
+            
+            if(currentTrackIndex < musicName.Length)
+            {
+                musicNameDisplay.text = musicName[currentTrackIndex];
+            }
         }
     }
 
