@@ -16,11 +16,15 @@ public class Timer : MonoBehaviour
     public Sprite[] spritesButton;
     public Image imageSwitch;
     private AudioSource audioSource;
+
     private bool _isPausedTimer = true;
+    private float _duration;     
+    private float _endTime;     
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        PrepareTimer();
         UpdateUIText();
         UpdateButtonSprite();
     }
@@ -29,51 +33,81 @@ public class Timer : MonoBehaviour
     {
         if (_isPausedTimer) return;
 
-        if (minutes > 0 || seconds > 0)
+        float timeLeft = _endTime - Time.unscaledTime;
+
+        if (timeLeft <= 0)
         {
-            seconds -= Time.deltaTime;
-
-            if (seconds < 0)
-            {
-                if (minutes > 0)
-                {
-                    minutes -= 1;
-                    seconds += 60;
-                }
-                else
-                {
-                    seconds = 0;
-                    _isPausedTimer = true;
-                    UpdateButtonSprite();
-
-                    if (alarmToggle.isOn && alarmSound != null)
-                    {
-                        audioSource.clip = alarmSound;
-                        audioSource.Play();
-                    }
-                }
-            }
+            timeLeft = 0;
+            _isPausedTimer = true;
+            OnFinish();
         }
 
-        UpdateUIText();
+        DisplayTime(timeLeft);
     }
 
-    private void UpdateUIText()
+    private void PrepareTimer()
     {
-        countTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(minutes), Mathf.FloorToInt(seconds));
+        _duration = (minutes * 60f) + seconds;
+    }
+
+    private void DisplayTime(float totalSeconds)
+    {
+        int min = Mathf.FloorToInt(totalSeconds / 60f);
+        int sec = Mathf.FloorToInt(totalSeconds % 60f);
+        countTime.text = $"{min:00}:{sec:00}";
     }
 
     public void StartPauseTimer()
     {
-        _isPausedTimer = !_isPausedTimer;
+        if (_isPausedTimer)
+        {
+            
+            _endTime = Time.unscaledTime + (minutes * 60f + seconds);
+            _isPausedTimer = false;
+        }
+        else
+        {
+            // Pausar (salvar tempo restante)
+            float timeLeft = _endTime - Time.unscaledTime;
+            minutes = Mathf.FloorToInt(timeLeft / 60f);
+            seconds = Mathf.FloorToInt(timeLeft % 60f);
+            _isPausedTimer = true;
+        }
+
         UpdateButtonSprite();
-        
+    }
+
+    public void ResetTimer()
+    {
+        _isPausedTimer = true;
+        seconds = 0f;
+        PrepareTimer();
+        UpdateUIText();
+    }
+
+    public void SetTime(float newMinutes)
+    {
+        minutes = newMinutes;
+        seconds = 0f;
+        PrepareTimer();
+        UpdateUIText();
+    }
+
+    private void OnFinish()
+    {
+        UpdateButtonSprite();
+
+        if (alarmToggle.isOn && alarmSound != null)
+        {
+            audioSource.clip = alarmSound;
+            audioSource.Play();
+        }
+
+        DisplayTime(0);
     }
 
     private void UpdateButtonSprite()
     {
-        // spritesButton[0] = Play
-        // spritesButton[1] = Pause
         if (imageSwitch.sprite == spritesButton[0])
         {
             imageSwitch.sprite = spritesButton[1];
@@ -83,17 +117,8 @@ public class Timer : MonoBehaviour
         imageSwitch.sprite = spritesButton[0];
     }
 
-    public void ResetTimer()
+    private void UpdateUIText()
     {
-        _isPausedTimer = true;
-        seconds = 0f;
-        UpdateUIText();
-    }
-
-    public void SetTime(float newMinutes)
-    {
-        minutes = newMinutes;
-        seconds = 0f;
-        UpdateUIText();
+        countTime.text = $"{minutes:00}:{seconds:00}";
     }
 }

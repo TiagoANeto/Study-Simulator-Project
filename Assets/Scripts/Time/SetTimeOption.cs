@@ -1,19 +1,26 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetTimeOption : MonoBehaviour
 {
-    DisplayTime timeOfDay;
-    Presets presets;
+    [Header("Referências")]
+    public DisplayTime displayTimeScript;  
+    public Presets presetsScript;
+    public BackgroudThemeColors backgroudColorsScript;          
+    public Toggle systemTimeToggle;     
 
-    private void Awake()
+    private void Start()
     {
-        timeOfDay = GetComponentInChildren<DisplayTime>();
-        presets = GetComponentInChildren<Presets>();
+        systemTimeToggle.onValueChanged.AddListener(OnToggleChanged);
+        displayTimeScript.enabled = true;
+        presetsScript.enabled = false;
+        backgroudColorsScript.enabled = false;
     }
 
-    public void SetTypeOfDayTime()
+    public void OnToggleChanged(bool useSystemTime)
     {
-        timeOfDay.enabled = true;
-        presets.enabled = false;
+        displayTimeScript.enabled = useSystemTime;
+        presetsScript.enabled = !useSystemTime;
+        backgroudColorsScript.enabled = !useSystemTime;
     }
 }

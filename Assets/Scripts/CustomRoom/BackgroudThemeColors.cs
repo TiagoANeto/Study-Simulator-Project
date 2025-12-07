@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroudThemeColors : MonoBehaviour
@@ -8,7 +6,7 @@ public class BackgroudThemeColors : MonoBehaviour
 
     void Start()
     {
-        cam = GetComponent<Camera>();
+        cam = GetComponentInParent<Camera>();
     }
 
     public void BackgroundColorThemeBlue()
