@@ -1,8 +1,6 @@
 // WeatherManager.cs
 using UnityEngine;
-using UnityEngine.UI;
 using System;
-using UnityEditor.Presets;
 
 public class WeatherManager : MonoBehaviour
 {

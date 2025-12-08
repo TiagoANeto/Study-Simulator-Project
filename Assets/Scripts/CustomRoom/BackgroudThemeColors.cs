@@ -11,7 +11,7 @@ public class BackgroudThemeColors : MonoBehaviour
 
     public void BackgroundColorThemeBlue()
     {
-        string hexBlueThemeColorCode = "#60a6e7ff";
+        string hexBlueThemeColorCode = "#92bfe9ff";
         Color blueThemeColorCode;
         ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
         cam.backgroundColor = blueThemeColorCode;
