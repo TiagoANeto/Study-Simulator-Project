@@ -17,7 +17,7 @@ public class ToDoListInterface : MonoBehaviour
    [Space(10)]
    public GameObject taskAddPrefab;
 
-   public void AddTask() // metodo para instanciar o prefab que contem as informações de task
+   public void AddTask() 
    {
       if (countInstance < 15)
       {
@@ -26,13 +26,7 @@ public class ToDoListInterface : MonoBehaviour
       }
       else
       {
-         DeleteTask();
-         countInstance--;
+         Debug.Log("Limite Max de Tasks");
       }
-   }
-
-   public void DeleteTask()
-   {
-      Destroy(this.gameObject);
    }
 }
