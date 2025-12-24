@@ -11,7 +11,7 @@ public class BackgroudThemeColors : MonoBehaviour
 
     public void BackgroundColorThemeBlue()
     {
-        string hexBlueThemeColorCode = "#92bfe9ff";
+        string hexBlueThemeColorCode = "#5B6F86";
         Color blueThemeColorCode;
         ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
         cam.backgroundColor = blueThemeColorCode;
@@ -27,7 +27,7 @@ public class BackgroudThemeColors : MonoBehaviour
 
     public void BackgroundColorThemeRed()
     {
-        string hexRedThemeColorCode = "#ca6969ff";
+        string hexRedThemeColorCode = "#9C5A2E";
         Color redThemeColorCode;
         ColorUtility.TryParseHtmlString(hexRedThemeColorCode, out redThemeColorCode);
         cam.backgroundColor = redThemeColorCode;
@@ -35,7 +35,7 @@ public class BackgroudThemeColors : MonoBehaviour
 
     public void BackgroundColorThemeGreen()
     {
-        string hexGreenThemeColorCode = "#203d0dff";
+        string hexGreenThemeColorCode = "#4F6B5B";
         Color greenThemeColorCode;
         ColorUtility.TryParseHtmlString(hexGreenThemeColorCode, out greenThemeColorCode);
         cam.backgroundColor = greenThemeColorCode;
