@@ -67,7 +67,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            // Pausar (salvar tempo restante)
+            //Pausar (salvar tempo restante)
             float timeLeft = _endTime - Time.unscaledTime;
             minutes = Mathf.FloorToInt(timeLeft / 60f);
             seconds = Mathf.FloorToInt(timeLeft % 60f);

@@ -22,6 +22,9 @@ public class PlaylistController : MonoBehaviour
     private int currentTrackIndex = 0;
     private bool isPaused = false;
 
+    public Sprite[] spritesButton;
+    public Image imageSwitch;
+
     #endregion
 
     void Start()
@@ -91,7 +94,7 @@ public class PlaylistController : MonoBehaviour
         
     }
 
-    public void ButtonMusicPause() // metodo para botão de pausa estilo switch, apenas verifica se a música está reproduzindo ou não, por meio de uma variavel boleana e faz os inversos da lógica
+    public void ButtonMusicPause() //metodo para botão de pausa estilo switch, apenas verifica se a música está reproduzindo ou não, por meio de uma variavel boleana e faz os inversos da lógica
     {
         if(isPaused)
         {
@@ -102,9 +105,10 @@ public class PlaylistController : MonoBehaviour
             audioSource.Pause();
         }
         isPaused = !isPaused;
+        UpdateButtonSprite();
     }
 
-    public void NextSong() // metodo para botão de reprozir a próxima música
+    public void NextSong() //metodo para botão de reprozir a próxima música
     {
         if(musicList.Length == 0) return; // Verifica se existem músicas na lista 
 
@@ -114,7 +118,7 @@ public class PlaylistController : MonoBehaviour
         musicNameDisplay.text = musicName[currentTrackIndex];
     }
 
-    public void PreviousSong() // metodo para botão de reprozir a música anterior
+    public void PreviousSong() //metodo para botão de reprozir a música anterior
     {
         if(musicList.Length == 0) return;
 
@@ -124,7 +128,7 @@ public class PlaylistController : MonoBehaviour
         musicNameDisplay.text = musicName[currentTrackIndex];
     }
 
-    public void RandomSong() // metodo para botão de música aleatória, fazendo com que uma música do index do array seja escolhida ao acaso para ser reproduzida
+    public void RandomSong() //metodo para botão de música aleatória, fazendo com que uma música do index do array seja escolhida ao acaso para ser reproduzida
     {
         if (musicList.Length == 0) return;
 
@@ -134,11 +138,22 @@ public class PlaylistController : MonoBehaviour
         {
             randomIndex = Random.Range(0, musicList.Length);
         }
-            while (randomIndex == currentTrackIndex); // Evita tocar a mesma música na sequência 
+            while (randomIndex == currentTrackIndex); //Evita tocar a mesma música na sequência 
 
         currentTrackIndex = randomIndex;
         audioSource.clip = musicList[currentTrackIndex];
         audioSource.Play();
         musicNameDisplay.text = musicName[currentTrackIndex];
+    }
+
+    private void UpdateButtonSprite()
+    {
+        if (imageSwitch.sprite == spritesButton[0])
+        {
+            imageSwitch.sprite = spritesButton[1];
+            return;
+        }
+
+        imageSwitch.sprite = spritesButton[0];
     }
 }
