@@ -15,6 +15,7 @@ public class Presets : MonoBehaviour
 
     public GameObject rainWindown;
     public GameObject rainVfx;
+    public GameObject rainBG;
     public Slider sliderRain;
 
 
@@ -48,6 +49,7 @@ public class Presets : MonoBehaviour
 
         ambienceNightLight.SetActive(false);
         nightWindown.SetActive(false);
+        rainBG.SetActive(false);
 
         Color backgroundDayColor;
         ColorUtility.TryParseHtmlString("#E7A553", out backgroundDayColor);
@@ -63,6 +65,7 @@ public class Presets : MonoBehaviour
         sunLight.SetActive(false);
         dayWindown.SetActive(false);
         sunRaysVfx.SetActive(false);
+        rainBG.SetActive(false);
 
         Color backgroundNightColor;
         ColorUtility.TryParseHtmlString("#292965", out backgroundNightColor);
@@ -73,6 +76,7 @@ public class Presets : MonoBehaviour
     {
         rainWindown.SetActive(true);
         rainVfx.SetActive(true);
+        rainBG.SetActive(true);
 
         ambienceNightLight.SetActive(false);
         ambienceDayLight.SetActive(false);
@@ -81,14 +85,14 @@ public class Presets : MonoBehaviour
         nightWindown.SetActive(false);
         sunRaysVfx.SetActive(false);
 
-        Color rainColor;
-        ColorUtility.TryParseHtmlString("#3d5566ff", out rainColor);
-        cam.backgroundColor = rainColor;
+        // Color rainColor;
+        // ColorUtility.TryParseHtmlString("#3d5566ff", out rainColor);
+        // cam.backgroundColor = rainColor;
     }
 
     public void BackgroundColorThemeBlue()
     {
-        string hexBlueThemeColorCode = "#60a6e7ff";
+        string hexBlueThemeColorCode = "#3d5566ff";
         Color blueThemeColorCode;
         ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
         cam.backgroundColor = blueThemeColorCode;
