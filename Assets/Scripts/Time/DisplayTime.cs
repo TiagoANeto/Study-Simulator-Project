@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class DisplayTime : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DisplayTime : MonoBehaviour
     [Header("Configuração de horário")] [Space(10)]
     [SerializeField] private TimeFormat timeFormat = TimeFormat.Hour24;
     private const string TIME_FORMAT_KEY = "TimeFormat";
+    public Toggle toggleHourFormat;
 
     [Header("Variáveis para armazenar hora e data do sistema local")] [Space(10)]
     [SerializeField] private TMP_Text displayHour;
@@ -34,6 +36,7 @@ public class DisplayTime : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         timeFormat = (TimeFormat)PlayerPrefs.GetInt(TIME_FORMAT_KEY, 0);
+        toggleHourFormat.isOn = timeFormat == TimeFormat.Hour12;
     }
 
     void Update()
@@ -102,7 +105,7 @@ public class DisplayTime : MonoBehaviour
         }
     }
 
-    private string GetFormattedTime(System.DateTime time)
+    private string GetFormattedTime(DateTime time)
     {
         if (timeFormat == TimeFormat.Hour24)
         {
@@ -111,7 +114,7 @@ public class DisplayTime : MonoBehaviour
         else
         {
             //AM/PM
-            return time.ToString("hh:mm");
+            return time.ToString("hh:mm tt");
         }
     }
 
@@ -119,5 +122,7 @@ public class DisplayTime : MonoBehaviour
     {
         timeFormat = use12Hours ? TimeFormat.Hour12 : TimeFormat.Hour24;
         PlayerPrefs.SetInt(TIME_FORMAT_KEY, (int)timeFormat);
+        
+        displayHour.text = GetFormattedTime(DateTime.Now);
     }
 }
