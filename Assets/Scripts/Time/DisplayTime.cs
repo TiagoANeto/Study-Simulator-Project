@@ -1,16 +1,21 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using System;
 
 public class DisplayTime : MonoBehaviour
 {
+    public enum TimeFormat{Hour24,Hour12}
+
+    [Header("Configuração de horário")] [Space(10)]
+    [SerializeField] private TimeFormat timeFormat = TimeFormat.Hour24;
+    private const string TIME_FORMAT_KEY = "TimeFormat";
+
     [Header("Variáveis para armazenar hora e data do sistema local")] [Space(10)]
     [SerializeField] private TMP_Text displayHour;
     [SerializeField] private TMP_Text displayDate;
     [SerializeField] private int hour;
     [SerializeField] private int minutes;
     [SerializeField] private string currentDate;
-
 
     [Header("Controladores de ambiente")] [Space(10)]
     //De 0 a 2 cores da manhã - de 3 a 5 cores da tarde - de 6 a 8 cores da noite
@@ -28,17 +33,19 @@ public class DisplayTime : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        timeFormat = (TimeFormat)PlayerPrefs.GetInt(TIME_FORMAT_KEY, 0);
     }
 
     void Update()
     {
-        hour = System.DateTime.Now.Hour;
-        minutes = System.DateTime.Now.Minute;
-        currentDate = System.DateTime.UtcNow.ToString("dd/MM/yy");
-        displayHour.text = string.Format("{0:00}:{1:00}", hour, Mathf.FloorToInt(minutes)); // pra garantir o formato de hora padrão do pc sem quebrar
-        displayDate.text = currentDate;
+        DateTime now = System.DateTime.Now;
 
-        //PresetRain();
+        hour = now.Hour;
+        minutes = now.Minute;
+
+        displayHour.text = GetFormattedTime(now);
+        displayDate.text = now.ToString("dd/MM/yy");
+
         DefaultAmbience(hour);
     }
     
@@ -93,5 +100,24 @@ public class DisplayTime : MonoBehaviour
 
             sunRaysVfx.SetActive(false);
         }
+    }
+
+    private string GetFormattedTime(System.DateTime time)
+    {
+        if (timeFormat == TimeFormat.Hour24)
+        {
+            return time.ToString("HH:mm");
+        }
+        else
+        {
+            //AM/PM
+            return time.ToString("hh:mm");
+        }
+    }
+
+    public void SetTimeFormat(bool use12Hours)
+    {
+        timeFormat = use12Hours ? TimeFormat.Hour12 : TimeFormat.Hour24;
+        PlayerPrefs.SetInt(TIME_FORMAT_KEY, (int)timeFormat);
     }
 }

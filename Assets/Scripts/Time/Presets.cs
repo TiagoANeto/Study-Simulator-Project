@@ -18,6 +18,11 @@ public class Presets : MonoBehaviour
     public GameObject rainBG;
     public Slider sliderRain;
 
+    public GameObject snowWindown;
+    public GameObject snowVfx;
+    public GameObject snowBG;
+    public Slider sliderSnow;
+
 
     private void Reset()
     {
@@ -51,6 +56,10 @@ public class Presets : MonoBehaviour
         nightWindown.SetActive(false);
         rainBG.SetActive(false);
 
+        snowWindown.SetActive(false);
+        snowVfx.SetActive(false);
+        snowBG.SetActive(false);
+
         Color backgroundDayColor;
         ColorUtility.TryParseHtmlString("#E7A553", out backgroundDayColor);
         cam.backgroundColor = backgroundDayColor;
@@ -66,6 +75,11 @@ public class Presets : MonoBehaviour
         dayWindown.SetActive(false);
         sunRaysVfx.SetActive(false);
         rainBG.SetActive(false);
+        
+        snowWindown.SetActive(false);
+        snowVfx.SetActive(false);
+        snowBG.SetActive(false);
+
 
         Color backgroundNightColor;
         ColorUtility.TryParseHtmlString("#292965", out backgroundNightColor);
@@ -85,40 +99,33 @@ public class Presets : MonoBehaviour
         nightWindown.SetActive(false);
         sunRaysVfx.SetActive(false);
 
-        // Color rainColor;
-        // ColorUtility.TryParseHtmlString("#3d5566ff", out rainColor);
-        // cam.backgroundColor = rainColor;
+        snowWindown.SetActive(false);
+        snowVfx.SetActive(false);
+        snowBG.SetActive(false);
+
+        Color rainColor;
+        ColorUtility.TryParseHtmlString("#3d5566ff", out rainColor);
+        cam.backgroundColor = rainColor;
     }
 
-    public void BackgroundColorThemeBlue()
+    public void ApplySnowPreset()
     {
-        string hexBlueThemeColorCode = "#3d5566ff";
-        Color blueThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexBlueThemeColorCode, out blueThemeColorCode);
-        cam.backgroundColor = blueThemeColorCode;
-    }
+        snowWindown.SetActive(true);
+        snowVfx.SetActive(true);
+        snowBG.SetActive(true);
 
-    public void BackgroundColorThemePurple()
-    {
-        string hexPurpleThemeColorCode = "#251E35";
-        Color purpleThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexPurpleThemeColorCode, out purpleThemeColorCode);
-        cam.backgroundColor = purpleThemeColorCode;
-    }
+        rainWindown.SetActive(false);
+        rainVfx.SetActive(false);
+        rainBG.SetActive(false);
+        ambienceNightLight.SetActive(false);
+        ambienceDayLight.SetActive(false);
+        sunLight.SetActive(false);
+        dayWindown.SetActive(false);
+        nightWindown.SetActive(false);
+        sunRaysVfx.SetActive(false);
 
-    public void BackgroundColorThemeRed()
-    {
-        string hexRedThemeColorCode = "#ca6969ff";
-        Color redThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexRedThemeColorCode, out redThemeColorCode);
-        cam.backgroundColor = redThemeColorCode;
-    }
-
-    public void BackgroundColorThemeGreen()
-    {
-        string hexGreenThemeColorCode = "#203d0dff";
-        Color greenThemeColorCode;
-        ColorUtility.TryParseHtmlString(hexGreenThemeColorCode, out greenThemeColorCode);
-        cam.backgroundColor = greenThemeColorCode;
+        Color snowColor;
+        ColorUtility.TryParseHtmlString("#c0d6e9ff", out snowColor);
+        cam.backgroundColor = snowColor;
     }
 }

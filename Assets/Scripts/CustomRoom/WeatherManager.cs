@@ -77,4 +77,23 @@ public class WeatherManager : MonoBehaviour
             }
         }
     }
+
+    public void OnSnowSliderChanged(float value)
+    {
+        if (value > 0.01f)
+        {
+            presets.ApplySnowPreset();
+        }
+        else
+        {
+            if (automaticMode)
+            {
+                ApplyAutomaticPresetByTime(); 
+            }
+            else
+            {
+                presets.ApplySunnyDay();
+            }
+        }
+    }
 }
