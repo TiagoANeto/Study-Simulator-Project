@@ -95,8 +95,9 @@ public class DisplayTime : MonoBehaviour
 
             cam.backgroundColor = Color.Lerp(backgroundColors[4], backgroundColors[5], t);
 
-            sunLight.SetActive(false);
             ambienceNightLight.SetActive(true);
+            sunLight.SetActive(false);
+            ambienceDayLight.SetActive(false);
 
             nightWindown.SetActive(true);
             dayWindown.SetActive(false);

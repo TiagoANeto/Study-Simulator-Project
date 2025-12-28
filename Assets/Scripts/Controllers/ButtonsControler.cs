@@ -17,6 +17,12 @@ public class ButtonsControler : MonoBehaviour
 
     #endregion
 
+    void Start()
+    {
+        slidersNoise.SetActive(true);
+        slidersNoise.SetActive(false);
+    }
+
     void FixedUpdate()
     {
         if(calendar.activeInHierarchy == true)
