@@ -28,6 +28,11 @@ public class TimerSettings : MonoBehaviour
         longBreakInput.text = longBreakTime.ToString("0");
     }
 
+    private void Update()
+    {
+        ShortBreakAutoStart();
+    }
+
     public void OnPomodoroChanged(string value)
     {
         if (float.TryParse(value, out float newTime))
@@ -108,6 +113,17 @@ public class TimerSettings : MonoBehaviour
         longBreakTime = Mathf.Max(1, longBreakTime - 5f); 
         longBreakInput.text = longBreakTime.ToString("0");
         timer.SetTime(longBreakTime);
+    }
+
+    public void ShortBreakAutoStart()
+    {
+        if(autoStartBreaksToggle.enabled)
+        {
+            if(timer.minutes == 0 && timer.seconds == 0)
+            {
+                ApplyShortBreak();
+            }
+        }
     }
 }
 
